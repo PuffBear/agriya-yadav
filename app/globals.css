@@ -1,0 +1,411 @@
+/* ============================================================
+   Agriya Yadav — Personal Site DS
+   colors_and_type.css
+
+   Direction: "Quant editorial" — a research journal cross-bred
+   with a trading terminal, with subtle tennis/sport notation.
+   Cream paper, warm ink, clay accent, tennis-ball chartreuse.
+   ============================================================ */
+
+/* ---------- Webfonts (Google Fonts substitutions) ---------- */
+/* NOTE TO USER: these are CDN substitutions. If you want
+   custom typography (e.g. Tiempos Headline + Sohne + Berkeley
+   Mono), supply the font files and replace the imports below. */
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  /* ----------------------------------------------------------
+     COLOR — base palette
+     The system runs on cream paper + warm ink, with two
+     sport-derived accents (clay and chalk/tennis-ball).
+     ---------------------------------------------------------- */
+
+  /* Paper — warm neutrals, light → less light */
+  --paper:        #F4EEE2;   /* primary canvas, warm cream         */
+  --paper-2:      #EAE0CB;   /* recessed surface / card backs       */
+  --paper-3:      #E0D3B7;   /* deeper paper / panels               */
+  --paper-edge:   #C9BB9A;   /* hairline rule on paper              */
+
+  /* Ink — warm near-black through to soft grey */
+  --ink:          #14110E;   /* primary text, full strength         */
+  --ink-2:        #3A332B;   /* secondary text                       */
+  --ink-3:        #6E665A;   /* tertiary / captions                  */
+  --ink-4:        #9A9080;   /* placeholder, footnotes               */
+  --ink-rule:     #2A241E;   /* hairline @ low opacity over paper   */
+
+  /* Accent — clay court red-orange (the loud one) */
+  --clay:         #B84A2C;
+  --clay-2:       #9A3D24;   /* press / darker                       */
+  --clay-3:       #E76B49;   /* lighter / hover lift on dark         */
+  --clay-wash:    #F2D8CC;   /* tinted background                    */
+
+  /* Secondary — tennis-ball chartreuse (use sparingly) */
+  --chalk:        #D3DC4E;
+  --chalk-2:      #B7C033;   /* press                                */
+  --chalk-wash:   #ECEFC2;
+
+  /* Terminal — when we lean into the trading-screen mode */
+  --terminal-bg:  #14110E;
+  --terminal-fg:  #F4EEE2;
+  --terminal-up:  #6FBF73;   /* P&L positive                         */
+  --terminal-dn:  #D85A4A;   /* P&L negative                         */
+  --terminal-mid: #8A8275;
+
+  /* Semantic — neutral by design (this brand avoids alert colors
+     except in the trading/data UI where they are first-class) */
+  --pos:          #4F8F55;
+  --neg:          #B84A2C;
+  --info:         #2F5F8A;
+
+  /* ----------------------------------------------------------
+     SURFACES — semantic aliases
+     ---------------------------------------------------------- */
+  --bg:           var(--paper);
+  --bg-recess:    var(--paper-2);
+  --bg-panel:     var(--paper-3);
+  --fg:           var(--ink);
+  --fg-2:         var(--ink-2);
+  --fg-3:         var(--ink-3);
+  --fg-4:         var(--ink-4);
+  --rule:         color-mix(in oklab, var(--ink-rule) 18%, transparent);
+  --rule-strong:  color-mix(in oklab, var(--ink-rule) 38%, transparent);
+  --accent:       var(--clay);
+  --accent-fg:    var(--paper);
+
+  /* ----------------------------------------------------------
+     TYPOGRAPHY — families
+     ---------------------------------------------------------- */
+  --font-serif:    "Newsreader", "Source Serif 4", "Iowan Old Style",
+                   "Apple Garamond", Georgia, serif;
+  --font-sans:     "Geist", "Söhne", "Inter", -apple-system,
+                   BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono:     "JetBrains Mono", "Berkeley Mono", "IBM Plex Mono",
+                   ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Type scale — tuned for editorial pacing, not SaaS density.
+     Display sizes use optical-size aware Newsreader.            */
+  --t-display:    clamp(56px, 8vw, 112px);     /* hero            */
+  --t-h1:         clamp(40px, 5vw, 64px);
+  --t-h2:         clamp(28px, 3.4vw, 40px);
+  --t-h3:         22px;
+  --t-h4:         18px;
+  --t-body:       17px;
+  --t-body-sm:    15px;
+  --t-caption:    13px;
+  --t-micro:      11px;
+
+  /* Line heights */
+  --lh-display:   0.96;
+  --lh-heading:   1.10;
+  --lh-body:      1.55;
+  --lh-tight:     1.22;
+
+  /* Tracking */
+  --tr-display:   -0.022em;
+  --tr-heading:   -0.012em;
+  --tr-body:      0em;
+  --tr-eyebrow:   0.14em;     /* uppercase eyebrows               */
+  --tr-mono:      0em;
+
+  /* ----------------------------------------------------------
+     SPACING / RADII / SHADOW
+     The brand is sharp: small radii, almost no shadow.
+     Elevation is implied by hairlines and offset, not blur.
+     ---------------------------------------------------------- */
+  --s-1:  4px;
+  --s-2:  8px;
+  --s-3:  12px;
+  --s-4:  16px;
+  --s-5:  24px;
+  --s-6:  32px;
+  --s-7:  48px;
+  --s-8:  64px;
+  --s-9:  96px;
+
+  --r-0:  0px;        /* default — sharp corners                 */
+  --r-1:  2px;        /* inputs, small chips                      */
+  --r-2:  4px;        /* buttons, cards                           */
+  --r-3:  8px;        /* sheets, modals                           */
+  --r-pill: 999px;    /* pills only, used sparingly               */
+
+  --shadow-hairline:  0 0 0 1px var(--rule);
+  --shadow-rest:      0 1px 0 var(--rule);
+  --shadow-card:      0 1px 0 var(--rule), 0 12px 24px -16px rgba(20,17,14,0.18);
+  --shadow-lift:      0 1px 0 var(--rule), 0 24px 48px -20px rgba(20,17,14,0.28);
+  --shadow-inset:     inset 0 0 0 1px var(--rule);
+
+  /* Motion — restrained. Linear or gentle ease. No bounce. */
+  --ease-standard:   cubic-bezier(0.2, 0, 0, 1);
+  --ease-out:        cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast:        120ms;
+  --dur-base:        200ms;
+  --dur-slow:        420ms;
+}
+
+/* ============================================================
+   SEMANTIC TYPE — drop-in classes / element defaults
+   ============================================================ */
+
+html, body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  font-size: var(--t-body);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection { background: var(--clay); color: var(--paper); }
+
+/* Display — for hero numerals + names. Newsreader at large opsz. */
+.t-display, h1.display {
+  font-family: var(--font-serif);
+  font-size: var(--t-display);
+  line-height: var(--lh-display);
+  letter-spacing: var(--tr-display);
+  font-weight: 500;
+  font-variation-settings: "opsz" 72;
+}
+
+/* H1 — page titles. Serif, looser than display. */
+h1, .t-h1 {
+  font-family: var(--font-serif);
+  font-size: var(--t-h1);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--tr-heading);
+  font-weight: 500;
+  font-variation-settings: "opsz" 36;
+  margin: 0;
+}
+
+/* H2 — section heads. Sans, all-lowercase pairing with serif H1. */
+h2, .t-h2 {
+  font-family: var(--font-serif);
+  font-size: var(--t-h2);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--tr-heading);
+  font-weight: 500;
+  font-variation-settings: "opsz" 24;
+  margin: 0;
+}
+
+/* H3, H4 — sub-headings. Sans. */
+h3, .t-h3 {
+  font-family: var(--font-sans);
+  font-size: var(--t-h3);
+  line-height: var(--lh-tight);
+  letter-spacing: -0.006em;
+  font-weight: 600;
+  margin: 0;
+}
+
+h4, .t-h4 {
+  font-family: var(--font-sans);
+  font-size: var(--t-h4);
+  line-height: var(--lh-tight);
+  letter-spacing: -0.004em;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Body */
+p, .t-body {
+  font-family: var(--font-sans);
+  font-size: var(--t-body);
+  line-height: var(--lh-body);
+  letter-spacing: var(--tr-body);
+  font-weight: 400;
+  text-wrap: pretty;
+}
+
+.t-body-sm {
+  font-size: var(--t-body-sm);
+  line-height: 1.5;
+}
+
+/* Long-form prose (research notes / writing). Serif body. */
+.t-prose {
+  font-family: var(--font-serif);
+  font-size: 19px;
+  line-height: 1.62;
+  letter-spacing: 0;
+  font-variation-settings: "opsz" 16;
+}
+.t-prose em { font-style: italic; }
+
+/* Eyebrow — micro caps + tracking. Used as section identifiers,
+   like "§ 03 — research" or "fig. 1". */
+.t-eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--t-micro);
+  letter-spacing: var(--tr-eyebrow);
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--fg-3);
+}
+
+/* Caption — small, italic serif. Used under figures and stats. */
+.t-caption {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: var(--t-caption);
+  line-height: 1.4;
+  color: var(--fg-3);
+}
+
+/* Mono — code, data, tabular numerals. */
+code, .t-mono, .t-code {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  letter-spacing: var(--tr-mono);
+  font-feature-settings: "tnum", "ss01";
+}
+
+/* Tabular numerals — for stat blocks / scoreboards */
+.t-tabular {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+/* Numeral display — for the big stat readouts (ELO 2384, etc) */
+.t-numeral {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-variation-settings: "opsz" 72;
+  font-feature-settings: "lnum", "tnum";
+  letter-spacing: -0.02em;
+}
+
+/* Links — quiet underline, clay on hover */
+a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--rule-strong);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color var(--dur-fast) var(--ease-standard),
+              text-decoration-color var(--dur-fast) var(--ease-standard);
+}
+a:hover {
+  color: var(--clay);
+  text-decoration-color: var(--clay);
+}
+
+/* HR — hairlines, never shadowed */
+hr {
+  border: 0;
+  border-top: 1px solid var(--rule);
+  margin: var(--s-6) 0;
+}
+
+/* Footnote ref — superscript serif, like a journal */
+.t-fnref {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.7em;
+  vertical-align: super;
+  line-height: 0;
+  color: var(--clay);
+}
+
+
+/* ============================================================
+   MOBILE RESPONSIVENESS (Media Queries)
+   ============================================================ */
+
+@media (max-width: 768px) {
+  /* Fix 2 and 3 column grids on homepage and projects */
+  .grid-2, .grid-3, .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr !important;
+    gap: var(--s-4) !important;
+  }
+  
+  .hero {
+    padding-top: var(--s-7);
+    padding-bottom: var(--s-7);
+  }
+  
+  .t-display, h1.display {
+    font-size: clamp(40px, 10vw, 56px);
+  }
+  
+  .container {
+    padding: 0 var(--s-4);
+  }
+  
+  .header-inner {
+    flex-direction: column;
+    gap: var(--s-3);
+  }
+  
+  .nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .t-display, h1.display {
+    font-size: clamp(32px, 8vw, 40px);
+  }
+}
+
+
+/* Extracted from index.html */
+
+    /* ============================================================
+       UI Kit local styles — only what doesn't belong in the root
+       tokens (layout shells, page-specific decoration, etc).
+       ============================================================ */
+    html, body { min-height: 100%; }
+    body { background: var(--paper); }
+    #root { min-height: 100vh; display: flex; flex-direction: column; }
+
+    /* Layout */
+    .shell { flex: 1; display: flex; flex-direction: column; }
+    .container { max-width: 1240px; margin: 0 auto; padding: 0 var(--s-7); width: 100%; box-sizing: border-box; }
+    .container-prose { max-width: 720px; margin: 0 auto; padding: 0 var(--s-7); width: 100%; box-sizing: border-box; }
+
+    /* Sticky header */
+    .header {
+      position: sticky; top: 0; z-index: 50;
+      background: color-mix(in oklab, var(--paper) 88%, transparent);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; height: 56px; }
+    .nav { display: flex; gap: var(--s-5); align-items: center; }
+    .nav-link {
+      font-family: var(--font-sans); font-size: 13px; font-weight: 500;
+      color: var(--ink-2); text-decoration: none; padding: 4px 0;
+      position: relative; cursor: pointer;
+      transition: color var(--dur-fast) var(--ease-standard);
+    }
+    .nav-link:hover { color: var(--ink); }
+    .nav-link.active { color: var(--ink); }
+    .nav-link.active::after {
+      content: ""; position: absolute; left: -2px; right: -2px; bottom: -19px;
+      height: 1.5px; background: var(--clay);
+    }
+    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); white-space: nowrap; }
+    .brand-mark { width: 28px; height: 28px; flex-shrink: 0; }
+    .brand-name { font-family: var(--font-serif); font-size: 18px; font-weight: 500; letter-spacing: -0.012em; white-space: nowrap; }
+    .nav-link { white-space: nowrap; }
+
+    /* Footer */
+    .footer { border-top: 1px solid var(--rule); padding: var(--s-5) 0; margin-top: var(--s-9); }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); letter-spacing: 0.04em; }
+
+    /* Background grid (homepage hero) */
+    .grid-bg {
+      background-image:
+        linear-gradient(to right, color-mix(in oklab, var(--ink-rule) 9%, transparent) 1px, transparent 1px),
+        linear-gradient(to bottom, color-mix(in oklab, var(--ink-rule) 9%, transparent) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+
+    /* Reveal — soft fade-in on page change */
+    .reveal { opacity: 1; }
+  
