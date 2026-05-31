@@ -1,6 +1,26 @@
 "use client";
 import React from 'react';
 import { Eyebrow, StatBlock, StatRow, Footnote } from "@/components/Primitives";
+import InfoGainAnimation from "@/components/InfoGainAnimation";
+
+/* ── figure block helper ──────────────────────────────────────── */
+
+function FigureBlock({ src, alt, caption }) {
+  return (
+    <div style={{ margin: "32px 0" }}>
+      <div style={{
+        borderRadius: "var(--r-2)",
+        overflow: "hidden",
+        boxShadow: "var(--shadow-card)",
+        border: "1px solid var(--rule)"
+      }}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={src} alt={alt} style={{ width: "100%", display: "block", background: "white" }} />
+      </div>
+      {caption && <p className="t-caption" style={{ marginTop: 8 }}>{caption}</p>}
+    </div>
+  );
+}
 
 /* ── inline style helpers ─────────────────────────────────────── */
 
@@ -183,22 +203,11 @@ export default function ResearchPage() {
       </p>
 
       {/* architecture diagram */}
-      <div style={{
-        margin: "24px 0",
-        borderRadius: "var(--r-2)",
-        overflow: "hidden",
-        boxShadow: "var(--shadow-card)",
-      }}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/research/model_architecture.png"
-          alt="B-SRM-CHFA model architecture: CHE (LSTM) → BIE (belief map) → NRM (regret minimizer)"
-          style={{ width: "100%", display: "block" }}
-        />
-      </div>
-      <p className="t-caption" style={{ marginTop: 4 }}>
-        B-SRM-CHFA architecture. The CHE encodes observation history; the BIE decodes a spatial belief map; the NRM selects actions conditioned on the belief summary alone.
-      </p>
+      <FigureBlock 
+        src="/research/figures/arch_di.png" 
+        alt="B-SRM-CHFA model architecture: CHE (LSTM) → BIE (belief map) → NRM (regret minimizer)"
+        caption="B-SRM-CHFA detailed architecture. The CHE encodes observation history; the BIE decodes a spatial belief map; the NRM selects actions conditioned on the belief summary alone."
+      />
 
       <SectionRule />
 
@@ -316,6 +325,12 @@ export default function ResearchPage() {
         The conclusion is clean: you cannot get meaningful capture from a regret table indexed by scalar belief summaries. The W×H belief map is irreducibly spatial. This is the empirical argument for B-SRM-CHFA&rsquo;s architecture — the BIE maps the full belief distribution into a latent summary, and the NRM conditions on that summary.<span className="t-fnref">³</span>
       </p>
 
+      <FigureBlock 
+        src="/research/figures/belief_cfr_comparison.png" 
+        alt="Bar chart: capture rate and IR across all variants vs reference bars"
+        caption="Belief-CFR capture rate and information regret across all 6 tabular variants. Every variant fails to capture the evader meaningfully (≤ 1.0%), falling dramatically short of the 77.0% three-regime baseline."
+      />
+
       <SectionRule />
 
       {/* ── MAPPO Comparison ──────────────────────────────── */}
@@ -411,17 +426,46 @@ export default function ResearchPage() {
         </table>
       </div>
 
+      <FigureBlock 
+        src="/research/figures/hybrid_threshold_sweep.png" 
+        alt="Capture rate and info regret versus H_threshold for three variants of the hybrid policy"
+        caption="Early two-regime threshold sweep across original, min_H, and refined variants."
+      />
+
+      <FigureBlock 
+        src="/research/figures/three_regime_sweep.png" 
+        alt="Heatmap of capture rate and information regret over a grid of H_hi and H_lo thresholds"
+        caption="Three-regime grid sweep. Capture rate and mean information regret across the (H_hi, H_lo) hyperparameter space. H_hi governs the transition from pure sweep to info-optimal pursuit and dominates the performance surface."
+      />
+
+      <FigureBlock 
+        src="/research/figures/three_regime_sweep_lineplot.png" 
+        alt="Line plot showing capture rate and info regret versus H_hi, with lines per H_lo"
+      />
+
       <h3 style={{ fontSize: 18, marginTop: 32, marginBottom: 10 }}>Regime-conditioned information regret</h3>
 
       <p className="t-prose">
         Splitting per-step data at H<sub>ref</sub>&thinsp;=&thinsp;5.0 bits into diffuse (min_H&thinsp;&gt;&thinsp;5.0) and concentrated (min_H&thinsp;≤&thinsp;5.0) bands reveals the entire performance gap is in the diffuse regime. Concentrated-band IR is completely flat at ~0.10 across all conditions. B-SRM-CHFA&rsquo;s incremental value must manifest during diffuse-belief steps — the diagnostic target: does it reduce diffuse-band IR below the three-regime&rsquo;s 0.170?<span className="t-fnref">⁴</span>
       </p>
 
+      <FigureBlock 
+        src="/research/figures/regime_conditioned_ir.png" 
+        alt="Regime-conditioned information regret and efficiency split by diffuse and concentrated belief bands"
+        caption="Regime-conditioned analysis. Information regret drops sharply in the diffuse band as H_hi increases, while remaining largely flat in the concentrated band."
+      />
+
       <h3 style={{ fontSize: 18, marginTop: 32, marginBottom: 10 }}>Cold-start degeneracy</h3>
 
       <p className="t-prose">
         Pure P<sub>IO</sub> (always exploiting information-optimally) suffers catastrophic cold-start degeneracy. With deterministic argmax, 90.2 actions are tied per step — pursuers freeze at (STAY, STAY, STAY) for the full horizon, yielding cap&thinsp;=&thinsp;0.010. Random tiebreaking gives 7× improvement (cap&thinsp;=&thinsp;0.070) but no tiebreak strategy rescues pure P<sub>IO</sub>. <em>Directionlessness</em>, not tie ambiguity, is the dominant failure mode. The punchline: B-SRM-CHFA must learn structured exploration direction from diffuse belief — an internal analogue of lawnmower traversal that emerges from representation rather than hard-coding.
       </p>
+
+      <FigureBlock 
+        src="/research/figures/pio_tiebreak_study.png" 
+        alt="Four panel plot: capture rate, info regret, cold-start exit speed, and tie ambiguity across 5 tie-breaking strategies"
+        caption="Cold-start degeneracy. Evaluating pure information-optimal pursuit under various tie-breaking strategies reveals severe directionlessness in the early diffuse phase."
+      />
 
       <SectionRule />
 
@@ -440,6 +484,20 @@ export default function ResearchPage() {
       <p className="t-prose">
         A critical finding: the greedy evader is <em>uncatchable</em> under cell-match capture, even by an omniscient full-obs pursuer (0/20 captures on W=25, T=2000). The evader maximizes minimum L2 distance and always has an escape direction on an open grid — a fundamental consequence of switching from FOV-based to cell-match capture.
       </p>
+
+      <InfoGainAnimation />
+
+      <FigureBlock 
+        src="/research/figures/info_gain_canonical.png" 
+        alt="Mean summed entropy, chosen joint info gain, mean info regret, and capture rate on canonical W=25 grid"
+        caption="Information efficiency on the canonical 25×25 grid. Evaluates random walk, greedy visible, coverage sweep, last seen, and full observation baselines."
+      />
+
+      <FigureBlock 
+        src="/research/figures/info_gain_comparison.png" 
+        alt="Information efficiency on smaller W=15 grid"
+        caption="Information efficiency on the smaller 15×15 grid."
+      />
 
       <SectionRule />
 
