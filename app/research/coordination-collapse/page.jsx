@@ -6,6 +6,7 @@ import {
   NoteBox, NoteLine,
   tableWrap, table, th, thR, td, tdR, tdLabel, tdHighlight,
 } from "@/components/Paper";
+import { CollapseBoundaryChart, HorizonSlideChart, LossAversionTransferChart } from "@/components/Charts";
 
 export default function CoordinationCollapsePage() {
   return (
@@ -122,6 +123,8 @@ export default function CoordinationCollapsePage() {
         crossing, not phase-like sharpness.
       </p>
 
+      <CollapseBoundaryChart />
+
       <p className="t-prose">
         The boundary is finite-horizon, and this matters for anyone wanting to quote a
         number. It slides left log-linearly with the training budget:
@@ -160,6 +163,8 @@ export default function CoordinationCollapsePage() {
           );
         })()}
       </TerminalBlock>
+
+      <HorizonSlideChart />
 
       <p className="t-prose">
         Longer training rescues some runs that collapse at shorter horizons; at any fixed
@@ -284,6 +289,8 @@ export default function CoordinationCollapsePage() {
         Within-sweep endpoints (α=β=0.88) with bootstrap 95% CIs, λ=1 → last interior
         (LBF: λ=4, which saturates against the w=1 ceiling beyond that).
       </p>
+
+      <LossAversionTransferChart />
 
       <p className="t-prose">
         The loss-aversion direction transfers in every setting. Secondary structure does
