@@ -179,3 +179,81 @@ export function ReviewNotice({ children }) {
     </p>
   );
 }
+
+/* ── request block: what replaces the detailed sections ───────── */
+
+const EMAIL = "agriya.yadav_ug2023@ashoka.edu.in";
+
+export function RequestFullWriteup({ paper, covers }) {
+  const subject = encodeURIComponent(`Full write-up request: ${paper}`);
+  const body = encodeURIComponent(
+    `Hi Agriya,\n\nI'd like to read the full write-up for "${paper}".\n\n` +
+    `A little about me and my interest:\n\n\n— `
+  );
+  return (
+    <section style={{
+      margin: "44px 0 8px",
+      padding: "28px 30px",
+      borderRadius: "var(--r-2)",
+      background: "var(--paper-2)",
+      boxShadow: "inset 0 0 0 1px var(--rule)",
+    }}>
+      <Eyebrow style={{ marginBottom: 12 }}>The rest of this one</Eyebrow>
+
+      <h2 style={{ fontSize: 24, marginBottom: 12, lineHeight: 1.2 }}>
+        Happy to send the full write-up.
+      </h2>
+
+      <p style={{
+        fontFamily: "var(--font-serif)", fontSize: 17, lineHeight: 1.6,
+        color: "var(--ink-2)", margin: "0 0 16px", maxWidth: 580,
+      }}>
+        What&rsquo;s above is the abstract and the headline result. The longer
+        version — method, ablations, failure modes, and the parts that
+        didn&rsquo;t work — goes out by email while this is under review.
+        Drop me a line and say roughly what you&rsquo;re interested in.
+      </p>
+
+      {covers?.length ? (
+        <div style={{ margin: "0 0 20px" }}>
+          <div style={{
+            fontFamily: "var(--font-mono)", fontSize: 10,
+            letterSpacing: "0.14em", textTransform: "uppercase",
+            color: "var(--ink-3)", marginBottom: 8,
+          }}>
+            The full version covers
+          </div>
+          <ul style={{
+            margin: 0, paddingLeft: 18,
+            fontFamily: "var(--font-sans)", fontSize: 14,
+            color: "var(--ink-2)", lineHeight: 1.8, maxWidth: 560,
+          }}>
+            {covers.map((c) => <li key={c}>{c}</li>)}
+          </ul>
+        </div>
+      ) : null}
+
+      <a
+        href={`mailto:${EMAIL}?subject=${subject}&body=${body}`}
+        style={{
+          display: "inline-block",
+          padding: "10px 18px",
+          borderRadius: "var(--r-2)",
+          background: "var(--ink)",
+          color: "var(--paper)",
+          fontFamily: "var(--font-sans)",
+          fontSize: 14,
+          fontWeight: 500,
+          textDecoration: "none",
+        }}
+      >
+        Email me for the full write-up &nbsp;→
+      </a>
+
+      <p className="t-caption" style={{ marginTop: 14, marginBottom: 0 }}>
+        Or write to <a href={`mailto:${EMAIL}`}>{EMAIL}</a> directly.
+        No code, no form — I just reply.
+      </p>
+    </section>
+  );
+}
