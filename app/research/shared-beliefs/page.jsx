@@ -6,6 +6,7 @@ import {
   NoteBox, NoteLine,
   tableWrap, table, th, thR, td, tdR, tdLabel, tdHighlight,
 } from "@/components/Paper";
+import { PrecisionUtilityChart, PolicyMatchedChart } from "@/components/Charts";
 
 export default function SharedBeliefsPage() {
   return (
@@ -111,6 +112,8 @@ export default function SharedBeliefsPage() {
         <strong>Theorem 4.2</strong>: shared estimation MSE is strictly smaller at both zero
         lag and lag d, while the capture ordering reverses between them.
       </p>
+
+      <PrecisionUtilityChart />
 
       <div style={tableWrap}>
         <table style={table}>
@@ -242,6 +245,8 @@ export default function SharedBeliefsPage() {
         Selected cells from the 12-cell grid, n = 32 paired seeds each; brackets are
         pointwise 95% paired-t intervals. MSE in rad².
       </p>
+
+      <PolicyMatchedChart />
 
       <p className="t-prose">
         The precision and synchronization predictions hold up: shared MSE is lower with
