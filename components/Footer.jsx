@@ -11,7 +11,7 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="container footer-inner">
-        <span><span style={{ color: "var(--clay)" }}>§</span> &nbsp; Gurugram → wherever &nbsp; · &nbsp; v2026.05</span>
+        <span><span style={{ color: "var(--clay)" }}>§</span> &nbsp; Sonipat → wherever &nbsp; · &nbsp; v2026.10</span>
         <span style={{ fontVariantNumeric: "tabular-nums" }}>{time.toTimeString().slice(0,8)} IST</span>
       </div>
     </footer>
