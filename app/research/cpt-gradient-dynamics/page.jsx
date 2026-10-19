@@ -6,6 +6,7 @@ import {
   NoteBox, NoteLine,
   tableWrap, table, th, thR, td, tdR, tdLabel, tdHighlight,
 } from "@/components/Paper";
+import { SaddleNodeChart } from "@/components/Charts";
 
 export default function CptGradientDynamicsPage() {
   return (
@@ -107,6 +108,8 @@ export default function CptGradientDynamicsPage() {
         <strong>Theorem 4</strong> then exhibits the fold exactly. With α=1 and quarter-power
         weighting, λ<sub>SN</sub> = (5 − 1/√3)/2 ≃ 2.211325:
       </p>
+
+      <SaddleNodeChart />
 
       <div style={tableWrap}>
         <table style={table}>
