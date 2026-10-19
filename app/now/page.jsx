@@ -5,25 +5,25 @@ import { Card, SectionHead, Eyebrow, StatBlock, Tag, ArrowRight, StatRow, Projec
 
 function NowPage() {
   const pins = [
-    { city: "Gurgaon",   country: "IN", lat: "28.46° N",  lng: "77.03° E",  when: "Wipro · current" },
-    { city: "Sonipat",   country: "IN", lat: "28.99° N",  lng: "77.02° E",  when: "Ashoka University" },
+    { city: "Sonipat",   country: "IN", lat: "28.99° N",  lng: "77.02° E",  when: "Ashoka University · senior" },
+    { city: "Gurgaon",   country: "IN", lat: "28.46° N",  lng: "77.03° E",  when: "May — Jun 2026 · Wipro" },
     { city: "London",    country: "UK", lat: "51.50° N",  lng: "0.12° W",   when: "Jul — Aug 2025 · LSE" },
     { city: "Melbourne", country: "AU", lat: "37.81° S",  lng: "144.96° E", when: "Jr Aus. Open · semis" },
   ];
   return (
     <div className="container-prose" style={{ padding: "64px var(--s-7) 32px" }}>
-      <Eyebrow section="05">Now · May 2026</Eyebrow>
+      <Eyebrow section="05">Now · October 2026</Eyebrow>
       <h1 style={{ marginTop: 14, marginBottom: 28 }}>What I'm doing this month.</h1>
 
       <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
-        <NowLine label="Where" body="Gurgaon, India. Office, court, dorm — in that order." />
-        <NowLine label="Working" body={<>At <strong>Wipro</strong>. Day job is the day job; the rest of this site is the rest of the day.</>} />
+        <NowLine label="Where" body="Sonipat, India. Library, court, dorm — in that order." />
+        <NowLine label="Studying" body={<>Senior year at <strong>Ashoka</strong>, mathematics and computer science.</>} />
+        <NowLine label="Writing" body={<>Four papers out for review — two at <strong>AAAI</strong>, two submitted to <strong>AAMAS 2027</strong>. <a href="/research">The short versions</a>.</>} />
         <NowLine label="Reading" body={<><em>The Volatility Surface</em> by Jim Gatheral. Re-reading <em>Sutton & Barto</em> ch. 13 (policy gradient).</>} />
-        <NowLine label="Training" body="Belief-Conditioned Regret Systems with exploitability analysis" />
         <NowLine label="Tennis" body="Twice a week on clay. Last set went 7–5 against the coach. Backhand leaking." />
         <NowLine label="Listening" body="Iceman by Drake" />
         <NowLine label="Watching" body="Just finished all seasons of Entourage, open to suggestions." />
-        <NowLine label="Open to" body={<>ML and RL research conversations for the next stretch. <a href="#">Reach out</a>.</>} />
+        <NowLine label="Open to" body={<>ML and RL research conversations for the next stretch. <a href="mailto:agriya.yadav_ug2023@ashoka.edu.in">Reach out</a>.</>} />
       </div>
 
       <hr/>
@@ -64,7 +64,7 @@ function NowPage() {
         fontSize: 13, color: "var(--ink-3)", lineHeight: 1.5,
         marginTop: 28,
       }}>
-        Inspired by <a href="#">nownownow.com</a>. Last updated 2026-05-27.
+        Inspired by <a href="#">nownownow.com</a>. Last updated 2026-10-19.
       </p>
     </div>
   );
