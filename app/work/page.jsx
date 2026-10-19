@@ -4,12 +4,24 @@ import { Card, SectionHead, Eyebrow, StatBlock, Tag, ArrowRight, StatRow, Projec
 /* WorkPage.jsx — projects index */
 
 const WORK_ITEMS = [
+  { num: "12", date: "MAY — JUN 2026", title: "Wipro · AI intern",
+    desc: "Applied AI work over the summer, in Gurgaon.",
+    tags: ["software", "ai"], cat: "Software" },
+  { num: "11", date: "2026 — PRESENT", title: "Coordination-collapse boundaries in MARL",
+    desc: "A confidence-intervalled protocol for locating where reward-mixed cooperative teams cross into lazy-agent collapse. w_crit = 0.666 [0.635, 0.694] on a six-node supply chain; loss aversion moves the boundary right, value curvature left. Four environment-algorithm combinations. Under review, AAAI.",
+    tags: ["marl", "reward design", "research"], cat: "Research" },
+  { num: "10", date: "2026 — PRESENT", title: "Prospect-theoretic gradient dynamics",
+    desc: "Probability weighting traps risk-sensitive learners in multi-agent settings. Exact scalar reduction of interior stationarity under general weighting, plus a loss-aversion-induced saddle-node at λ = (5 − 1/√3)/2. An 80-digit inverse-S Prelec sweep finds the mechanism at every sampled exponent. Submitted, AAMAS 2027.",
+    tags: ["theory", "game theory", "research"], cat: "Research" },
+  { num: "09", date: "2026 — PRESENT", title: "When more accurate shared beliefs hurt",
+    desc: "Multi-agent stochastic particle systems. Exact decomposition of unique capture into opportunity minus redundancy, and a four-collector construction where pooling strictly lowers angular MSE while reversing capture advantage. Submitted, AAMAS 2027.",
+    tags: ["theory", "multi-agent", "research"], cat: "Research" },
   { num: "08", date: "DEC 2025 — PRESENT", title: "h-ShARC",
     desc: "Novel HCARP-DS problem under compound distribution shifts (demand, traversal cost, service availability) with a shift-conditioned transformer decoder and CVaR-REINFORCE with within-tail advantage normalization. 14% lower CVaR₀.₁ tail-risk across shift severities φ ∈ [0,1] at 6% mean makespan overhead.",
     tags: ["research", "rl", "transformer"], cat: "Research" },
-  { num: "07", date: "APR 2026 — PRESENT", title: "Belief-state RL for pursuit-evasion",
-    desc: "Multi-module belief-state architecture (contextual history + belief inference) for partially-observable pursuit-evasion games, trained via equilibrium-oriented self-play under α = 0.04. Empirical slope of log T* vs log a is 1.63 — theoretical 1.0.",
-    tags: ["rl", "research", "self-play"], cat: "Research" },
+  { num: "07", date: "APR 2026 — PRESENT", title: "POPEG — when does partial observability bind?",
+    desc: "A controlled pursuit-evasion benchmark and policy-class audit. Three-level policy ladder (zero-information, posterior-free, privileged) certifies when hidden state is actually binding; a seen→contact→capture funnel localizes where learned policies fail. 0.686 best posterior-free vs 0.993 privileged at the canonical point. Under review, AAAI.",
+    tags: ["benchmark", "marl", "research"], cat: "Research" },
   { num: "06", date: "SEP 2025 — JAN 2026", title: "Multilingual political-tweet sentiment",
     desc: "EDA on 7.1M multilingual Indian political tweets. Benchmarked LLMs, XLM-RoBERTa, DistilBERT — up to 83.6% accuracy across categories. Keyword extraction, normalization, translational drift, polarity (mean 0.06). Submitted to ICWSM '26.",
     tags: ["nlp", "research", "ICWSM '26"], cat: "Research" },
@@ -38,9 +50,9 @@ function WorkPage() {
   return (
     <div>
       <section className="container" style={{ padding: "64px var(--s-7) 32px" }}>
-        <Eyebrow section="01">Work · 2020 → 2026</Eyebrow>
+        <Eyebrow section="01">Work · 2020 → 2027</Eyebrow>
         <h1 style={{ marginTop: 14, marginBottom: 16 }}>
-          Eight projects, give or take.
+          Twelve projects, give or take.
         </h1>
         <p style={{ fontFamily: "var(--font-serif)", fontSize: 19, lineHeight: 1.6, margin: 0, color: "var(--ink-2)", maxWidth: 720 }}>
           Most of these are research notes, ML systems, or trading experiments. A couple were shipped to real users; most were shipped to me. I keep a numerical record so I can tell when I'm fooling myself.
