@@ -122,10 +122,11 @@ export default function ResearchPage() {
         </div>
 
         <p className="t-caption" style={{ marginTop: 24, maxWidth: 680 }}>
-          All four are under review or submitted; several are anonymised for
-          double-blind review, so these pages give the question, method, and headline
-          numbers rather than the manuscripts. Happy to talk about any of them —{" "}
-          <a href="mailto:agriya.yadav_ug2023@ashoka.edu.in">get in touch</a>.
+          All four are under review or submitted, and anonymised for double-blind
+          review, so each page gives the abstract, the headline result and the figures
+          rather than the manuscript. The longer write-ups go out by email — ask me for
+          whichever one interests you, at{" "}
+          <a href="mailto:agriya.yadav_ug2023@ashoka.edu.in">agriya.yadav_ug2023@ashoka.edu.in</a>.
         </p>
       </section>
     </div>
