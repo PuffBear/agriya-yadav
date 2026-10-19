@@ -127,6 +127,53 @@ function HomePage() {
         </div>
       </section>
 
+      {/* Limitframe — a small note, deliberately short */}
+      <section className="container" style={{ padding: "72px var(--s-7) 0" }}>
+        <Eyebrow section="06" style={{ marginBottom: 18 }}>Lately</Eyebrow>
+        <div className="stack-sm" style={{
+          borderTop: "1px solid var(--rule)",
+          borderBottom: "1px solid var(--rule)",
+          padding: "28px 0",
+          display: "grid",
+          gridTemplateColumns: "minmax(0, 1fr) minmax(0, 1.4fr)",
+          gap: 40,
+          alignItems: "baseline",
+        }}>
+          <div>
+            <div style={{
+              fontFamily: "var(--font-serif)",
+              fontSize: 34,
+              fontWeight: 500,
+              letterSpacing: "-0.02em",
+              lineHeight: 1.05,
+            }}>
+              Limitframe
+            </div>
+            <div style={{
+              fontFamily: "var(--font-mono)",
+              fontSize: 10,
+              letterSpacing: "0.14em",
+              textTransform: "uppercase",
+              color: "var(--clay)",
+              marginTop: 8,
+            }}>
+              Physical AI &nbsp;·&nbsp; early
+            </div>
+          </div>
+          <p style={{
+            fontFamily: "var(--font-serif)",
+            fontSize: 19,
+            lineHeight: 1.6,
+            margin: 0,
+            color: "var(--ink-2)",
+          }}>
+            A physical AI company I&rsquo;m building. Too early to write the page it
+            deserves, so this is the whole announcement — the work above is most of the
+            reason it exists.
+          </p>
+        </div>
+      </section>
+
       {/* Footnotes */}
       <section className="container" style={{ padding: "72px var(--s-7) 24px" }}>
         <div style={{ borderTop: "1px solid var(--rule)", paddingTop: 18, display: "flex", flexDirection: "column", gap: 8, maxWidth: 720 }}>

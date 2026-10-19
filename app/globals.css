@@ -344,6 +344,12 @@ hr {
     flex-wrap: wrap;
     justify-content: center;
   }
+
+  /* inline two-column blocks that must stack on phones */
+  .stack-sm {
+    grid-template-columns: 1fr !important;
+    gap: var(--s-4) !important;
+  }
 }
 
 @media (max-width: 480px) {
