@@ -9,7 +9,6 @@ function ShelfPage() {
       <Eyebrow section="05" style={{ marginBottom: 28 }}>Shelf · November 2026</Eyebrow>
 
       <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
-        <NowLine label="Where" body="Ashoka University. Dorm, classes, library — in that order." />
         <NowLine label="Studying (right now)" body="Graduate Reinforcement Learning, Supply Chain and Operations Optimisation, Data Science Methods." />
         <NowLine label="Writing" body={<><a href="/research">Papers submitted</a>, and on a break for a month or two. Still open to conversations.</>} />
         <NowLine label="Reading" body={<><a href="https://web.stanford.edu/class/psych209/Readings/SuttonBartoIPRLBook2ndEd.pdf" target="_blank" rel="noopener noreferrer"><em>Reinforcement Learning</em></a>, Sutton &amp; Barto.</>} />
