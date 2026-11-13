@@ -41,6 +41,9 @@ function HomePage() {
               I&rsquo;m a senior at <a href="https://www.ashoka.edu.in" target="_blank" rel="noopener noreferrer">Ashoka</a> reading mathematics and computer science. My work sits where probability, game theory, and reinforcement learning overlap — <Link href="/research">four papers under review</Link> on what breaks when agents can&rsquo;t see everything, and a <Link href="/work/influencer-partisanship">fifth</Link> on political partisanship amongst influencers. There is also an <Link href="/work/turnsports">ATP match-outcome model</Link> that holds <em>93.26%</em> accuracy on 12,018 unseen matches and a <Link href="/work/taskbound">prompt-injection defense</Link> for tool-using agents. Lately been working and reading a lot on physical AI.
             </p>
             <p style={{ fontFamily: "var(--font-serif)", fontSize: 18, lineHeight: 1.6, margin: "16px 0 0", color: "var(--ink-2)" }}>
+              Away from the work it&rsquo;s mostly music, architecture, and watching sport — MLB, the NBA, and tennis — along with a steady run of movies and TV shows. What&rsquo;s currently on rotation is on the <Link href="/shelf">shelf</Link>.
+            </p>
+            <p style={{ fontFamily: "var(--font-serif)", fontSize: 18, lineHeight: 1.6, margin: "16px 0 0", color: "var(--ink-2)" }}>
               Before all of this I was a tennis player — ranked first in India in the AITA u-14/u-16 draws, semifinalist at the Junior Australian Open. The court is where I learned what serious practice feels like. Mostly the rest is the same exercise on different terrain.
             </p>
             <div className="pill-links">
