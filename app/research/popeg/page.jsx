@@ -12,9 +12,9 @@ export default function PopegPage() {
 
       <PaperHeader
         eyebrow="01"
-        venue="AAAI"
-        status="under review"
-        year="2026"
+        venue="AAMAS 2027"
+        status="submitted"
+        year="2027"
         title="When does partial observability bind in pursuit–evasion? The POPEG benchmark and a policy-class audit."
         authors={["A. YADAV", "w/ Prof. D. GUPTA", "ASHOKA UNIV."]}
         abstract={<>
@@ -138,7 +138,7 @@ export default function PopegPage() {
       />
 
       <ReviewNotice>
-        Under double-blind review, so the manuscript itself stays off the site for now.
+        Submitted to AAMAS 2027; the manuscript stays off the site while it is under review.
       </ReviewNotice>
     </article>
   );

@@ -18,7 +18,7 @@ function NowPage() {
       <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
         <NowLine label="Where" body="Sonipat, India. Library, court, dorm — in that order." />
         <NowLine label="Studying" body={<>Senior year at <strong>Ashoka</strong>, mathematics and computer science.</>} />
-        <NowLine label="Writing" body={<>Four papers out for review — two at <strong>AAAI</strong>, two submitted to <strong>AAMAS 2027</strong>. <a href="/research">The short versions</a>.</>} />
+        <NowLine label="Writing" body={<>Four papers out for review — two submitted to <strong>TMLR</strong>, two to <strong>AAMAS 2027</strong>. <a href="/research">The short versions</a>.</>} />
         <NowLine label="Reading" body={<><em>The Volatility Surface</em> by Jim Gatheral. Re-reading <em>Sutton & Barto</em> ch. 13 (policy gradient).</>} />
         <NowLine label="Tennis" body="Twice a week on clay. Last set went 7–5 against the coach. Backhand leaking." />
         <NowLine label="Listening" body="Iceman by Drake" />

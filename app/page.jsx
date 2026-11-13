@@ -87,37 +87,23 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Quant championship — strategy book, full width */}
+      {/* Stat row — the receipts, after research */}
       <section className="container" style={{ padding: "72px var(--s-7) 0" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 14 }}>
-          <Eyebrow section="03">Quant championship · alphas</Eyebrow>
-          <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--ink-3)", letterSpacing: "0.06em" }}>
-            stage 1 · 152k entrants
-          </span>
-        </div>
-        <QuantBook/>
-        <p className="t-caption" style={{ marginTop: 10 }}>
-          Three of my submitted alphas, with the panel metrics from the BRAIN platform.
-        </p>
-      </section>
-
-      {/* Stat row — the receipts, after research and the quant book */}
-      <section className="container" style={{ padding: "72px var(--s-7) 0" }}>
-        <Eyebrow section="04" style={{ marginBottom: 18 }}>Receipts</Eyebrow>
+        <Eyebrow section="03" style={{ marginBottom: 18 }}>Receipts</Eyebrow>
         <StatRow>
           <StatBlock num="#1" label="AITA u-14 / u-16" footnote="Ranked first, singles, India." />
-          <StatBlock num="SF" label="Junior Aus. Open" footnote="Semifinals, Melbourne." />
+          <StatBlock num="Semi" label="Finals" footnote="Junior Australian Open, Melbourne." />
           <StatBlock num="3,000" unit="/152k" label="Int'l Quant Champ. — S1" footnote="Top 2% of the global field." />
-          <StatBlock num="4" label="Papers under review" footnote="AAAI · AAMAS 2027." />
+          <StatBlock num="4" label="Papers under review" footnote="TMLR · AAMAS 2027." />
         </StatRow>
       </section>
 
       {/* Project teaser — 3 cards */}
       <section className="container" style={{ padding: "72px var(--s-7) 0" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 18 }}>
-          <Eyebrow section="05">Selected work</Eyebrow>
+          <Eyebrow section="04">Selected work</Eyebrow>
           <Link href="/work" style={{ fontFamily: "var(--font-mono)", fontSize: 12, color: "var(--ink-2)" }}>
-            see all 12 →
+            see all 13 →
           </Link>
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }}>
@@ -125,6 +111,7 @@ function HomePage() {
             num="04"
             date="FEB — MAY 2025"
             title="turnsports.ai"
+            href="/work/turnsports"
             desc="ATP match-outcome predictor. 93.26% test accuracy on 12,018 unseen matches; custom TennisElo with surface-specific K-factors. Production Node + React, 150 ms / 2,000 QPS."
             tags={["tennis", "ml", "full-stack"]}
           />
@@ -132,6 +119,7 @@ function HomePage() {
             num="08"
             date="DEC 2025 — PRESENT"
             title="h-ShARC"
+            href="/work/h-sharc"
             desc="Novel HCARP-DS under compound distribution shifts. Shift-conditioned transformer decoder + CVaR-REINFORCE with within-tail advantage norm. 14% lower CVaR₀.₁ tail risk at 6% mean makespan overhead."
             tags={["research", "rl", "transformer"]}
           />
@@ -139,6 +127,7 @@ function HomePage() {
             num="03"
             date="OCT 2025 — JAN 2026"
             title="Order matching engine"
+            href="/work/order-matching-engine"
             desc="Multi-threaded Python OME simulating a 20-security, 200-trader exchange. SkipList price-time priority, FIFO queues, 85% match accuracy."
             tags={["trading", "python", "systems"]}
           />
@@ -147,7 +136,7 @@ function HomePage() {
 
       {/* Limitframe — a small note, deliberately short */}
       <section className="container" style={{ padding: "72px var(--s-7) 0" }}>
-        <Eyebrow section="06" style={{ marginBottom: 18 }}>Lately</Eyebrow>
+        <Eyebrow section="05" style={{ marginBottom: 18 }}>Lately</Eyebrow>
         <div className="stack-sm" style={{
           borderTop: "1px solid var(--rule)",
           borderBottom: "1px solid var(--rule)",
@@ -190,6 +179,20 @@ function HomePage() {
             reason it exists.
           </p>
         </div>
+      </section>
+
+      {/* Quant championship — strategy book, full width, below the Limitframe note */}
+      <section className="container" style={{ padding: "72px var(--s-7) 0" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 14 }}>
+          <Eyebrow section="06">Quant championship · alphas</Eyebrow>
+          <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--ink-3)", letterSpacing: "0.06em" }}>
+            stage 1 · 152k entrants
+          </span>
+        </div>
+        <QuantBook/>
+        <p className="t-caption" style={{ marginTop: 10 }}>
+          Three of my submitted alphas, with the panel metrics from the BRAIN platform.
+        </p>
       </section>
 
       {/* Footnotes */}

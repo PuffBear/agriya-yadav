@@ -4,23 +4,32 @@ import { Card, SectionHead, Eyebrow, StatBlock, Tag, ArrowRight, StatRow, Projec
 /* WorkPage.jsx — projects index */
 
 const WORK_ITEMS = [
+  { num: "13", date: "SEP 2026", title: "TaskBound — a prompt-injection defense for AgentDojo",
+    desc: "A deterministic authorization gate at the tool-execution boundary. Every proposed call is checked against an authority envelope derived from the user's task: action, destination, resource, data, delegation, scope. Benchmark attack success 6/12 → 0/12 on the development set with no benign regressions; attacked utility 4/12 → 9/12 on the sealed run.",
+    href: "/work/taskbound",
+    tags: ["ai security", "agents", "evaluation"], cat: "Research" },
   { num: "12", date: "MAY — JUN 2026", title: "Wipro · AI intern",
     desc: "Applied AI work over the summer, in Gurgaon.",
     tags: ["software", "ai"], cat: "Software" },
   { num: "11", date: "2026 — PRESENT", title: "Coordination-collapse boundaries in MARL",
-    desc: "A confidence-intervalled protocol for locating where reward-mixed cooperative teams cross into lazy-agent collapse. w_crit = 0.666 [0.635, 0.694] on a six-node supply chain; loss aversion moves the boundary right, value curvature left. Four environment-algorithm combinations. Under review, AAAI.",
+    desc: "A confidence-intervalled protocol for locating where reward-mixed cooperative teams cross into lazy-agent collapse. w_crit = 0.666 [0.635, 0.694] on a six-node supply chain; loss aversion moves the boundary right, value curvature left. Four environment-algorithm combinations. Submitted, TMLR.",
+    href: "/research/coordination-collapse",
     tags: ["marl", "reward design", "research"], cat: "Research" },
   { num: "10", date: "2026 — PRESENT", title: "Prospect-theoretic gradient dynamics",
     desc: "Probability weighting traps risk-sensitive learners in multi-agent settings. Exact scalar reduction of interior stationarity under general weighting, plus a loss-aversion-induced saddle-node at λ = (5 − 1/√3)/2. An 80-digit inverse-S Prelec sweep finds the mechanism at every sampled exponent. Submitted, AAMAS 2027.",
+    href: "/research/cpt-gradient-dynamics",
     tags: ["theory", "game theory", "research"], cat: "Research" },
   { num: "09", date: "2026 — PRESENT", title: "When more accurate shared beliefs hurt",
-    desc: "Multi-agent stochastic particle systems. Exact decomposition of unique capture into opportunity minus redundancy, and a four-collector construction where pooling strictly lowers angular MSE while reversing capture advantage. Submitted, AAMAS 2027.",
+    desc: "Multi-agent stochastic particle systems. Exact decomposition of unique capture into opportunity minus redundancy, and a four-collector construction where pooling strictly lowers angular MSE while reversing capture advantage. Submitted, TMLR.",
+    href: "/research/shared-beliefs",
     tags: ["theory", "multi-agent", "research"], cat: "Research" },
   { num: "08", date: "DEC 2025 — PRESENT", title: "h-ShARC",
     desc: "Novel HCARP-DS problem under compound distribution shifts (demand, traversal cost, service availability) with a shift-conditioned transformer decoder and CVaR-REINFORCE with within-tail advantage normalization. 14% lower CVaR₀.₁ tail-risk across shift severities φ ∈ [0,1] at 6% mean makespan overhead.",
+    href: "/work/h-sharc",
     tags: ["research", "rl", "transformer"], cat: "Research" },
   { num: "07", date: "APR 2026 — PRESENT", title: "POPEG — when does partial observability bind?",
-    desc: "A controlled pursuit-evasion benchmark and policy-class audit. Three-level policy ladder (zero-information, posterior-free, privileged) certifies when hidden state is actually binding; a seen→contact→capture funnel localizes where learned policies fail. 0.686 best posterior-free vs 0.993 privileged at the canonical point. Under review, AAAI.",
+    desc: "A controlled pursuit-evasion benchmark and policy-class audit. Three-level policy ladder (zero-information, posterior-free, privileged) certifies when hidden state is actually binding; a seen→contact→capture funnel localizes where learned policies fail. 0.686 best posterior-free vs 0.993 privileged at the canonical point. Submitted, AAMAS 2027.",
+    href: "/research/popeg",
     tags: ["benchmark", "marl", "research"], cat: "Research" },
   { num: "06", date: "SEP 2025 — JAN 2026", title: "Multilingual political-tweet sentiment",
     desc: "EDA on 7.1M multilingual Indian political tweets. Benchmarked LLMs, XLM-RoBERTa, DistilBERT — up to 83.6% accuracy across categories. Keyword extraction, normalization, translational drift, polarity (mean 0.06). Submitted to ICWSM '26.",
@@ -30,9 +39,11 @@ const WORK_ITEMS = [
     tags: ["software", "ocr", "llm"], cat: "Software" },
   { num: "04", date: "FEB — MAY 2025", title: "turnsports.ai",
     desc: "ATP match-outcome predictor. 93.26% test accuracy on 12,018 unseen matches; custom TennisElo with surface-specific K-factors. Production Node + React, MySQL-indexed, 120k+ precomputed predictions, 150 ms p50 / 2,000 QPS simulated load.",
+    href: "/work/turnsports",
     tags: ["tennis", "ml", "full-stack"], cat: "Sport" },
   { num: "03", date: "OCT 2025 — JAN 2026", title: "Order matching engine",
     desc: "Multi-threaded Python OME simulating a 20-security, 200-trader stock exchange. SkipList-based price-time priority + FIFO queues. 85% match accuracy, 15% fewer unmatched trades. TradingView chart API.",
+    href: "/work/order-matching-engine",
     tags: ["trading", "python", "systems"], cat: "Trading" },
   { num: "02", date: "JUL 2020 — PRESENT", title: "eCPPL — extending CPP to logistics",
     desc: "Hybrid GNN + RL layer over classical CPP solvers. Three variants (CPP-LC, CPP-TW, k-CPP), masked-action PPO + feasibility checks, validated on graphs up to 500 nodes / 1,000 edges. Benchmarking suite across grid, random-geometric, clustered, OSM-derived.",
@@ -52,7 +63,7 @@ function WorkPage() {
       <section className="container" style={{ padding: "64px var(--s-7) 32px" }}>
         <Eyebrow section="01">Work · 2020 → 2027</Eyebrow>
         <h1 style={{ marginTop: 14, marginBottom: 16 }}>
-          Twelve projects, give or take.
+          Thirteen projects, give or take.
         </h1>
         <p style={{ fontFamily: "var(--font-serif)", fontSize: 19, lineHeight: 1.6, margin: 0, color: "var(--ink-2)", maxWidth: 720 }}>
           Most of these are research notes, ML systems, or trading experiments. A couple were shipped to real users; most were shipped to me. I keep a numerical record so I can tell when I'm fooling myself.

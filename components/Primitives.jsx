@@ -1,5 +1,6 @@
 "use client";
 import React from 'react';
+import Link from "next/link";
 /* Primitives.jsx — shared atoms */
 const { useState, useEffect } = React;
 
@@ -83,9 +84,11 @@ export function StatRow({ children }) {
 }
 
 /* ProjectCard — numbered, dated, serif title, tagged */
-export function ProjectCard({ num, date, title, desc, tags = [], href = "#" }) {
+export function ProjectCard({ num, date, title, desc, tags = [], href }) {
+  /* Cards with a write-up link to it; the rest are plain, non-clickable cards. */
+  const Wrap = href ? Link : "div";
   return (
-    <a href={href} style={{
+    <Wrap {...(href ? { href } : {})} style={{
       display: "block",
       background: "var(--paper)",
       borderRadius: "var(--r-2)",
@@ -95,7 +98,7 @@ export function ProjectCard({ num, date, title, desc, tags = [], href = "#" }) {
       color: "inherit",
       transition: "transform var(--dur-fast) var(--ease-standard), box-shadow var(--dur-fast) var(--ease-standard)",
     }}
-    onMouseEnter={(e)=>{ e.currentTarget.style.transform = "translateY(-1px)"; e.currentTarget.style.boxShadow = "0 1px 0 var(--rule), 0 24px 48px -20px rgba(20,17,14,0.28), inset 0 0 0 1px var(--rule)"; }}
+    onMouseEnter={(e)=>{ if (!href) return; e.currentTarget.style.transform = "translateY(-1px)"; e.currentTarget.style.boxShadow = "0 1px 0 var(--rule), 0 24px 48px -20px rgba(20,17,14,0.28), inset 0 0 0 1px var(--rule)"; }}
     onMouseLeave={(e)=>{ e.currentTarget.style.transform = ""; e.currentTarget.style.boxShadow = "0 1px 0 var(--rule), 0 12px 24px -16px rgba(20,17,14,0.18), inset 0 0 0 1px var(--rule)"; }}
     >
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
@@ -132,7 +135,7 @@ export function ProjectCard({ num, date, title, desc, tags = [], href = "#" }) {
           ))}
         </div>
       ) : null}
-    </a>
+    </Wrap>
   );
 }
 

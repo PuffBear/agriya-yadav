@@ -11,9 +11,9 @@ export default function SharedBeliefsPage() {
 
       <PaperHeader
         eyebrow="04"
-        venue="AAMAS 2027"
+        venue="TMLR"
         status="submitted"
-        year="2027"
+        year="2026"
         title="When more accurate shared beliefs hurt: memory, diversity, and multi-agent capture geometry."
         authors={["A. YADAV", "ASHOKA UNIV."]}
         abstract={<>
@@ -76,7 +76,7 @@ export default function SharedBeliefsPage() {
       />
 
       <ReviewNotice>
-        Submitted to AAMAS 2027; the manuscript stays off the site while it is under review.
+        Submitted to TMLR; the manuscript stays off the site while it is under review.
       </ReviewNotice>
     </article>
   );

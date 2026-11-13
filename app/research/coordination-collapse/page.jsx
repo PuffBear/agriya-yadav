@@ -11,8 +11,8 @@ export default function CoordinationCollapsePage() {
 
       <PaperHeader
         eyebrow="02"
-        venue="AAAI"
-        status="under review"
+        venue="TMLR"
+        status="submitted"
         year="2026"
         title="Measuring coordination-collapse boundaries in reward-mixed cooperative MARL."
         authors={["A. YADAV", "ASHOKA UNIV."]}
@@ -84,7 +84,7 @@ export default function CoordinationCollapsePage() {
       />
 
       <ReviewNotice>
-        Under double-blind review, so the manuscript itself stays off the site for now.
+        Submitted to TMLR; the manuscript stays off the site while it is under review.
       </ReviewNotice>
     </article>
   );
