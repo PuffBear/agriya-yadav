@@ -122,15 +122,15 @@ export function SectionRule() {
 
 /* ── paper header: title, byline rule, abstract ───────────────── */
 
-export function PaperHeader({ eyebrow, title, authors, venue, status, year, abstract }) {
+export function PaperHeader({ eyebrow, title, authors, venue, status, year, abstract, backHref = "/research", backLabel = "All research" }) {
   return (
     <>
       <div style={{ marginBottom: 14 }}>
-        <Link href="/research" style={{
+        <Link href={backHref} style={{
           fontFamily: "var(--font-mono)", fontSize: 11,
           letterSpacing: "0.1em", textTransform: "uppercase",
           color: "var(--ink-3)", textDecoration: "none",
-        }}>← All research</Link>
+        }}>← {backLabel}</Link>
       </div>
 
       <Eyebrow section={eyebrow}>{venue} · {status}</Eyebrow>

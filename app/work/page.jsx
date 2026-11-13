@@ -6,8 +6,8 @@ import { Card, SectionHead, Eyebrow, StatBlock, Tag, ArrowRight, StatRow, Projec
 const LINKEDIN_EXPERIENCE = "https://www.linkedin.com/in/agriya-yadav/details/experience/";
 
 const WORK_ITEMS = [
-  { num: "14", date: "ASHOKA UNIVERSITY", title: "Teaching assistant",
-    desc: "Teaching assistant at Ashoka University. Details are on LinkedIn.",
+  { num: "14", date: "ASHOKA UNIVERSITY", title: "Teaching assistant · Machine Learning",
+    desc: "Teaching assistant for the Machine Learning course at Ashoka University.",
     href: LINKEDIN_EXPERIENCE,
     tags: ["teaching"], cat: "Teaching" },
   { num: "13", date: "SEP 2026", title: "TaskBound — a prompt-injection defense for AgentDojo",
@@ -38,9 +38,10 @@ const WORK_ITEMS = [
     desc: "A controlled pursuit-evasion benchmark and policy-class audit. Three-level policy ladder (zero-information, posterior-free, privileged) certifies when hidden state is actually binding; a seen→contact→capture funnel localizes where learned policies fail. 0.686 best posterior-free vs 0.993 privileged at the canonical point. Submitted, AAMAS 2027.",
     href: "/research/popeg",
     tags: ["benchmark", "marl", "research"], cat: "Research" },
-  { num: "06", date: "SEP 2025 — JAN 2026", title: "Multilingual political-tweet sentiment",
-    desc: "EDA on 7.1M multilingual Indian political tweets. Benchmarked LLMs, XLM-RoBERTa, DistilBERT — up to 83.6% accuracy across categories. Keyword extraction, normalization, translational drift, polarity (mean 0.06). Submitted to ICWSM '26.",
-    tags: ["nlp", "research", "ICWSM '26"], cat: "Research" },
+  { num: "06", date: "SEP 2025 — JAN 2026", title: "Political partisanship in Indian influencer discourse",
+    desc: "7.1M retweets of 960 Indian influencers by politicians, 2020–2023, in English and Hindi. Retweet-based polarity scores, KeyBERT aspect extraction, and a LoRA-tuned Mistral-7B stance classifier at 77.5% accuracy against 52–58% for BERT, RoBERTa and PyABSA. Political alignment predicts stance on 30 of 35 aspects. Submitted to CSCW.",
+    href: "/work/influencer-partisanship",
+    tags: ["nlp", "research", "CSCW"], cat: "Research" },
   { num: "05", date: "MAY — JUL 2025", title: "Austere · ML SDE intern",
     desc: "Supervised fuzzy-matching pipeline cutting query mismatches by 68% across 5 enterprise MySQL deployments. Hybrid OCR (PyMuPDF + OpenCV + Cascade TabNet + Tesseract) for the Anti-Corruption Bureau. Fine-tuned Mistral-7B (PEFT-LoRA + 4-bit) on A100 SXM.",
     href: LINKEDIN_EXPERIENCE,
