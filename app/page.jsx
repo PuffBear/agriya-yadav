@@ -103,7 +103,7 @@ function HomePage() {
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 18 }}>
           <Eyebrow section="04">Selected work</Eyebrow>
           <Link href="/work" style={{ fontFamily: "var(--font-mono)", fontSize: 12, color: "var(--ink-2)" }}>
-            see all 13 →
+            see all 14 →
           </Link>
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }}>

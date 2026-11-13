@@ -86,9 +86,11 @@ export function StatRow({ children }) {
 /* ProjectCard — numbered, dated, serif title, tagged */
 export function ProjectCard({ num, date, title, desc, tags = [], href }) {
   /* Cards with a write-up link to it; the rest are plain, non-clickable cards. */
-  const Wrap = href ? Link : "div";
+  const external = href && /^https?:/.test(href);
+  const Wrap = !href ? "div" : external ? "a" : Link;
+  const linkProps = !href ? {} : external ? { href, target: "_blank", rel: "noopener noreferrer" } : { href };
   return (
-    <Wrap {...(href ? { href } : {})} style={{
+    <Wrap {...linkProps} style={{
       display: "block",
       background: "var(--paper)",
       borderRadius: "var(--r-2)",

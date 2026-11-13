@@ -12,17 +12,17 @@ function NowPage() {
   ];
   return (
     <div className="container-prose" style={{ padding: "64px var(--s-7) 32px" }}>
-      <Eyebrow section="05">Now · October 2026</Eyebrow>
-      <h1 style={{ marginTop: 14, marginBottom: 28 }}>What I'm doing this month.</h1>
+      <Eyebrow section="05">Now · November 2026</Eyebrow>
+      <h1 style={{ marginTop: 14, marginBottom: 28 }}>What I&rsquo;m doing this month.</h1>
 
       <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
-        <NowLine label="Where" body="Sonipat, India. Library, court, dorm — in that order." />
-        <NowLine label="Studying" body={<>Senior year at <strong>Ashoka</strong>, mathematics and computer science.</>} />
-        <NowLine label="Writing" body={<>Four papers out for review — two submitted to <strong>TMLR</strong>, two to <strong>AAMAS 2027</strong>. <a href="/research">The short versions</a>.</>} />
-        <NowLine label="Reading" body={<><em>The Volatility Surface</em> by Jim Gatheral. Re-reading <em>Sutton & Barto</em> ch. 13 (policy gradient).</>} />
-        <NowLine label="Tennis" body="Twice a week on clay. Last set went 7–5 against the coach. Backhand leaking." />
-        <NowLine label="Listening" body="Iceman by Drake" />
-        <NowLine label="Watching" body="Just finished all seasons of Entourage, open to suggestions." />
+        <NowLine label="Where" body="Ashoka University. Dorm, classes, library — in that order." />
+        <NowLine label="Studying" body="Graduate Reinforcement Learning, Supply Chain and Operations Optimisation, Data Science Methods." />
+        <NowLine label="Writing" body={<><a href="/research">Papers submitted</a>, and on a break for a month or two. Still open to conversations.</>} />
+        <NowLine label="Reading" body={<><a href="https://web.stanford.edu/class/psych209/Readings/SuttonBartoIPRLBook2ndEd.pdf" target="_blank" rel="noopener noreferrer"><em>Reinforcement Learning</em></a>, Sutton &amp; Barto.</>} />
+        <NowLine label="Tennis" body="Twice a month. Picking up the frequency from next year." />
+        <NowLine label="Listening" body={<><em>Before the Flood</em> by Keinemusik, <em>No Flockin</em> by Kodak Black, and <em>MET GALA</em> by Gunna.</>} />
+        <NowLine label="Watching" body={<>Just finished <a href="https://www.imdb.com/title/tt0387199/" target="_blank" rel="noopener noreferrer"><em>Entourage</em></a> (twice). Rewatching <a href="https://www.imdb.com/title/tt0491738/" target="_blank" rel="noopener noreferrer"><em>Psych</em></a>.</>} />
         <NowLine label="Open to" body={<>ML and RL research conversations for the next stretch. <a href="mailto:agriya.yadav_ug2023@ashoka.edu.in">Reach out</a>.</>} />
       </div>
 
@@ -64,7 +64,7 @@ function NowPage() {
         fontSize: 13, color: "var(--ink-3)", lineHeight: 1.5,
         marginTop: 28,
       }}>
-        Inspired by <a href="#">nownownow.com</a>. Last updated 2026-10-19.
+        Inspired by <a href="#">nownownow.com</a>. Last updated 2026-11-13.
       </p>
     </div>
   );
