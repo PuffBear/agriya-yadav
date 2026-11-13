@@ -12,7 +12,7 @@ export default function Header() {
     { id: "home",     label: "Index" },
     { id: "work",     label: "Work" },
     { id: "research", label: "Research" },
-    { id: "now",      label: "Now" },
+    { id: "shelf",    label: "Shelf" },
   ];
   return (
     <header className="header">

@@ -1,9 +1,9 @@
 "use client";
 import React from 'react';
 import { Card, SectionHead, Eyebrow, StatBlock, Tag, ArrowRight, StatRow, ProjectCard, QuantBook, Footnote } from "@/components/Primitives";
-/* NowPage.jsx — short, personal, sparse */
+/* Shelf — what I am reading, watching, listening to and doing. Full width. */
 
-function NowPage() {
+function ShelfPage() {
   const pins = [
     { city: "Sonipat",   country: "IN", lat: "28.99° N",  lng: "77.02° E",  when: "Ashoka University · senior" },
     { city: "Gurgaon",   country: "IN", lat: "28.46° N",  lng: "77.03° E",  when: "May — Jun 2026 · Wipro" },
@@ -11,9 +11,8 @@ function NowPage() {
     { city: "Melbourne", country: "AU", lat: "37.81° S",  lng: "144.96° E", when: "Jr Aus. Open · semis" },
   ];
   return (
-    <div className="container-prose" style={{ padding: "64px var(--s-7) 32px" }}>
-      <Eyebrow section="05">Now · November 2026</Eyebrow>
-      <h1 style={{ marginTop: 14, marginBottom: 28 }}>What I&rsquo;m doing this month.</h1>
+    <div className="container" style={{ padding: "64px var(--s-7) 32px" }}>
+      <Eyebrow section="05" style={{ marginBottom: 28 }}>Shelf · November 2026</Eyebrow>
 
       <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
         <NowLine label="Where" body="Ashoka University. Dorm, classes, library — in that order." />
@@ -29,7 +28,7 @@ function NowPage() {
       <hr/>
 
       <Eyebrow style={{ marginBottom: 14 }}>Pins · recent</Eyebrow>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 12 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 12 }}>
         {pins.map(p => (
           <div key={p.city} style={{
             display: "grid", gridTemplateColumns: "20px 1fr",
@@ -72,7 +71,7 @@ function NowPage() {
 
 function NowLine({ label, body }) {
   return (
-    <div style={{ display: "grid", gridTemplateColumns: "100px 1fr", gap: 16, alignItems: "baseline", paddingBottom: 16, borderBottom: "1px solid var(--rule)" }}>
+    <div style={{ display: "grid", gridTemplateColumns: "140px 1fr", gap: 24, alignItems: "baseline", paddingBottom: 16, borderBottom: "1px solid var(--rule)" }}>
       <div style={{
         fontFamily: "var(--font-mono)",
         fontSize: 11,
@@ -87,4 +86,4 @@ function NowLine({ label, body }) {
 
 
 
-export default NowPage;
+export default ShelfPage;
