@@ -73,10 +73,10 @@ function WorkPage() {
       <section className="container" style={{ padding: "64px var(--s-7) 32px" }}>
         <Eyebrow section="01">Work · 2020 → 2027</Eyebrow>
         <h1 style={{ marginTop: 14, marginBottom: 16 }}>
-          Fourteen projects, give or take.
+          Research, projects, and a few jobs.
         </h1>
         <p style={{ fontFamily: "var(--font-serif)", fontSize: 19, lineHeight: 1.6, margin: 0, color: "var(--ink-2)", maxWidth: 720 }}>
-          Most of these are research notes, ML systems, or trading experiments. A couple were shipped to real users; most were shipped to me. I keep a numerical record so I can tell when I&rsquo;m fooling myself.
+          Papers under review, ML systems, and trading experiments, alongside two internships and a teaching assistantship. A couple of the projects were shipped to real users; most were shipped to me. I keep a numerical record so I can tell when I&rsquo;m fooling myself.
         </p>
       </section>
 
