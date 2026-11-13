@@ -1,5 +1,6 @@
 "use client";
 import React from 'react';
+import { PairedBars, Flow } from "@/components/WorkFigures";
 import { FigureBlock } from "@/components/Paper";
 import { WriteupHeader, H2, H3, P, List, DataTable, RepoLink } from "@/components/Writeup";
 
@@ -109,6 +110,17 @@ export default function TaskBoundPage() {
           ["purpose", "The task relationship that makes the action relevant."],
         ]}
       />
+      <Flow
+        label="Flow: the user task is turned into an authority envelope; each proposed tool call is checked against it at the gate; allowed calls run and blocked calls return a denial to the model."
+        caption="The path of one tool call. The envelope is built once from the user’s task; every call the model proposes is checked against it before anything executes."
+        steps={[
+          { title: "User task", sub: ["the only source", "of authority"] },
+          { title: "Envelope", sub: ["action · destination", "resource · data", "delegation · scope"] },
+          { title: "Proposed call", sub: ["tool + arguments", "from the model"] },
+          { title: "Gate", sub: ["arguments checked", "against envelope"], hi: true },
+          { title: "Run or deny", sub: ["allow: executes", "block: no effect"] },
+        ]}
+      />
       <P>Every proposed call is then checked against the envelope along these lines:</P>
       <List ordered items={[
         <><strong>Action.</strong> Is this kind of action — read, send, modify, delete — part of the task?</>,
@@ -213,6 +225,17 @@ export default function TaskBoundPage() {
         ]}
         caption="Development comparison, 56 jobs. These cases were inspected during development, so they show the security signal but are not a holdout."
       />
+      <PairedBars
+        legend={["No defense", "TaskBound"]}
+        label="Bar chart, development set. Attack success: 6 of 12 without defense, 0 of 12 with TaskBound. Utility under attack: 3 of 12 against 7 of 12. Policy-clean completion: 0 of 12 against 7 of 12. Benign utility: 14 of 16 for both."
+        caption="Development set. Attack success falls to zero while the benign tasks are untouched, and more attacked tasks are completed cleanly."
+        groups={[
+          { label: "Attack success\n(lower is better)", a: 6 / 12, aText: "6/12", b: 0, bText: "0/12" },
+          { label: "Utility\nunder attack", a: 3 / 12, aText: "3/12", b: 7 / 12, bText: "7/12" },
+          { label: "Policy-clean\ncompletion", a: 0, aText: "0/12", b: 7 / 12, bText: "7/12" },
+          { label: "Benign\nutility", a: 14 / 16, aText: "14/16", b: 14 / 16, bText: "14/16" },
+        ]}
+      />
       <P>
         Attack success went from half the runs to none, with no benign task lost. The
         attacker tried harder against the defended agent — 30 unauthorized calls against 20 —
@@ -232,6 +255,16 @@ export default function TaskBoundPage() {
           ["Unauthorized side effects executed", "—", "0"],
         ]}
         caption="Sealed comparison, 48 jobs, run once after preregistration."
+      />
+      <PairedBars
+        legend={["No defense", "TaskBound"]}
+        label="Bar chart, sealed set. Attack success: 0 of 12 for both arms. Utility under attack: 4 of 12 without defense, 9 of 12 with TaskBound. Benign utility: 7 of 12 against 8 of 12."
+        caption="Sealed set. The gain is in task completion under attack; attack success was already zero in the undefended arm."
+        groups={[
+          { label: "Attack success\n(lower is better)", a: 0, aText: "0/12", b: 0, bText: "0/12" },
+          { label: "Utility\nunder attack", a: 4 / 12, aText: "4/12", b: 9 / 12, bText: "9/12" },
+          { label: "Benign\nutility", a: 7 / 12, aText: "7/12", b: 8 / 12, bText: "8/12" },
+        ]}
       />
       <P>
         The sealed run needs to be read carefully. Attacked utility more than doubled and

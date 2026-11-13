@@ -1,5 +1,6 @@
 "use client";
 import React from 'react';
+import { SeverityCurves, Flow } from "@/components/WorkFigures";
 import { WriteupHeader, H2, H3, P, List, DataTable, Code, RepoLink } from "@/components/Writeup";
 
 const REPO = "https://github.com/PuffBear/ShARC";
@@ -89,6 +90,18 @@ export default function HSharcPage() {
       <H2>The method</H2>
       <P>There are three pieces.</P>
 
+      <Flow
+        label="Architecture: the arcs of an instance go through a transformer encoder; a pointer decoder, which also receives the shift vector and the running budget, picks the next arc; the choice updates the environment and the loop repeats."
+        caption="The policy. The decoder is the only part that sees the shift and the running budget, and it is trained on the worst tenth of rollouts."
+        note="repeat until every required arc is served → reward → CVaR-REINFORCE update"
+        steps={[
+          { title: "Instance", sub: ["required arcs,", "demands, priorities"] },
+          { title: "Encoder", sub: ["transformer", "3 layers · 8 heads"] },
+          { title: "Decoder", sub: ["pointer + mask", "+ shift φ", "+ budget βₜ"], hi: true },
+          { title: "Next arc", sub: ["sampled in training,", "greedy at test"] },
+          { title: "Environment", sub: ["vehicle time,", "capacity updated"] },
+        ]}
+      />
       <H3>1. A policy that is told how bad things are</H3>
       <P>
         The policy is a transformer encoder over the arcs and a pointer decoder that picks
@@ -144,6 +157,7 @@ export default function HSharcPage() {
         ]}
         caption="Makespan by shift severity, 60 instances × 5 seeds. RN is the risk-neutral policy. Standard deviations across seeds are under 1.1 for the means and under 3.5 for CVaR."
       />
+      <SeverityCurves />
       <P>The pattern is the same at every severity:</P>
       <List items={[
         <>ShARC’s tail is <strong>about 14% better</strong>: CVaR<sub>0.1</sub> is 14.8% lower with no shift and 13.7% lower at full shift.</>,

@@ -1,5 +1,6 @@
 "use client";
 import React from 'react';
+import { ExploitabilityDots, Flow } from "@/components/WorkFigures";
 import { WriteupHeader, H2, H3, P, List, DataTable, Code, RepoLink } from "@/components/Writeup";
 
 const REPO = "https://github.com/PuffBear/turnsportsAI";
@@ -68,6 +69,17 @@ export default function TurnsportsPage() {
         server only looks them up.
       </P>
 
+      <Flow
+        label="Serving pipeline: match history feeds the rating and classifier models offline; every matchup’s probabilities are written to a MySQL table; at request time the Express server only looks rows up and renders match cards."
+        caption="Everything left of the table happens offline. A page view touches only the last two boxes."
+        steps={[
+          { title: "Match history", sub: ["ATP results", "by surface"] },
+          { title: "Model", sub: ["TennisElo", "+ classifier"] },
+          { title: "MySQL table", sub: ["120k+ matchups", "precomputed"] },
+          { title: "Express", sub: ["one lookup", "per match"], hi: true },
+          { title: "Match card", sub: ["two names,", "two probabilities"] },
+        ]}
+      />
       <H3>Precompute, then look up</H3>
       <P>
         A MySQL table holds one row per matchup with both win probabilities.
@@ -191,6 +203,7 @@ LIMIT  1`}</Code>
         ]}
         caption="Exploitability is how much a best-responding opponent would win per hand; lower is better. The 25,000-iteration run took 7.8 hours on an M1 laptop."
       />
+      <ExploitabilityDots />
       <P>
         Two things about that last row. Exploitability oscillated during training, so 0.17
         is the best checkpoint and 0.75 is where the run ended. And the run visited about
@@ -216,6 +229,16 @@ LIMIT  1`}</Code>
         through Ollama) that is handed those tool outputs and writes the explanation, so
         the numbers in its advice are computed and not generated.
       </P>
+      <Flow
+        label="Coach: the game state goes to a set of tools — equity, pot odds, rollouts and a state summary — whose outputs are passed to a local language model that writes the advice shown to the player."
+        caption="The coach. The tools compute; the language model only explains."
+        steps={[
+          { title: "Game state", sub: ["cards, pot,", "stacks, position"] },
+          { title: "Tools", sub: ["equity · pot odds", "rollouts vs the bot", "board texture"], hi: true },
+          { title: "Language model", sub: ["Llama 3.2", "run locally"] },
+          { title: "Advice", sub: ["action + reasons,", "by risk profile"] },
+        ]}
+      />
       <List items={[
         "Three risk profiles — conservative, moderate, aggressive — change how much equity edge over the pot odds is required before recommending a call.",
         "Opponent statistics (how often they enter pots, raise preflop, fold to a continuation bet) are tracked and fed into advice once there is enough history.",

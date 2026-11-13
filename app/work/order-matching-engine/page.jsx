@@ -1,5 +1,6 @@
 "use client";
 import React from 'react';
+import { OrderBookDiagram, Flow } from "@/components/WorkFigures";
 import { WriteupHeader, H2, H3, P, List, DataTable, Code, RepoLink } from "@/components/Writeup";
 
 const REPO = "https://github.com/PuffBear/ASX_colab";
@@ -55,6 +56,7 @@ export default function OrderMatchingEnginePage() {
         structure for each.
       </P>
 
+      <OrderBookDiagram />
       <H3>Price levels: a skip list</H3>
       <P>
         Each side of the book is a skip list keyed on price. A skip list is a sorted linked
@@ -114,6 +116,17 @@ export default function OrderMatchingEnginePage() {
         carries its own lock, so two orders at different prices do not wait on each other.
       </P>
 
+      <Flow
+        label="System: human traders and market-making bots send limit orders to a Flask API, which routes each order to that symbol’s order book; the matching loop runs and produces trades and a last traded price, which the front end reads back."
+        caption="The whole system. Bots and people use the same entry point, and each symbol’s book is independent of the others."
+        steps={[
+          { title: "Traders", sub: ["people via the UI", "bots on threads"] },
+          { title: "Flask API", sub: ["place order", "read book"] },
+          { title: "Symbol book", sub: ["one per listing", "bids + asks"] },
+          { title: "Matching loop", sub: ["price, then time", "partial fills"], hi: true },
+          { title: "Trades", sub: ["trade log", "last traded price"] },
+        ]}
+      />
       <H2>Giving it a market to match</H2>
       <P>
         An empty book is not much to look at, so each symbol gets a market-making bot on its

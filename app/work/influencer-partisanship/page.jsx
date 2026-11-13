@@ -1,7 +1,8 @@
 "use client";
 import React from 'react';
+import { RankedBars, Flow } from "@/components/WorkFigures";
 import {
-  TerminalBlock, SectionRule, PaperHeader, ReviewNotice, RequestFullWriteup,
+  SectionRule, PaperHeader, ReviewNotice, RequestFullWriteup,
 } from "@/components/Paper";
 
 export default function InfluencerPartisanshipPage() {
@@ -45,47 +46,33 @@ export default function InfluencerPartisanshipPage() {
         independent, which is what makes comparing them meaningful.
       </p>
 
+      <Flow
+        label="Pipeline: retweets of influencers by politicians give each influencer a polarity score; aspects are extracted from tweet text; a fine-tuned language model classifies each tweet’s stance toward an aspect; alignment is then compared with stance."
+        caption="The pipeline, as described in the abstract. Leaning comes from who retweets an influencer; stance comes from what the influencer wrote."
+        steps={[
+          { title: "Retweets", sub: ["politicians →", "influencers"] },
+          { title: "Polarity", sub: ["ruling vs", "opposition share"] },
+          { title: "Aspects", sub: ["KeyBERT on", "tweet text"] },
+          { title: "Stance", sub: ["LoRA-tuned LLM:", "3-way stance label"], hi: true },
+          { title: "Comparison", sub: ["does alignment", "predict stance?"] },
+        ]}
+      />
+
       <SectionRule />
 
-      <TerminalBlock title="Stance classification, English held-out set" subtitle="265 samples · 3 seeds">
-        {(() => {
-          const grid = "1.6fr 90px 90px";
-          const rows = [
-            ["PyABSA",               "0.520", "0.509"],
-            ["BERT",                 "0.550", "0.509"],
-            ["RoBERTa",              "0.577", "0.571"],
-            ["Mistral-7B, zero-shot", "0.566", "0.541"],
-            ["Mistral-7B, few-shot",  "0.630", "0.609"],
-            ["Mistral-7B, LoRA",      "0.775", "0.754"],
-          ];
-          return (
-            <>
-              <div style={{
-                display: "grid", gridTemplateColumns: grid, gap: 8,
-                color: "#8A8275", fontSize: 10, letterSpacing: "0.14em",
-                textTransform: "uppercase", paddingBottom: 6,
-              }}>
-                <span>model</span>
-                <span style={{ textAlign: "right" }}>accuracy</span>
-                <span style={{ textAlign: "right" }}>macro F1</span>
-              </div>
-              {rows.map(([m, a, f]) => (
-                <div key={m} style={{
-                  display: "grid", gridTemplateColumns: grid, gap: 8,
-                  fontVariantNumeric: "tabular-nums", alignItems: "baseline",
-                }}>
-                  <span style={{ color: m.endsWith("LoRA") ? "#F4EEE2" : "#8A8275" }}>{m}</span>
-                  <span style={{ textAlign: "right", color: m.endsWith("LoRA") ? "#6FBF73" : "#F4EEE2" }}>{a}</span>
-                  <span style={{ textAlign: "right", color: m.endsWith("LoRA") ? "#6FBF73" : "#F4EEE2" }}>{f}</span>
-                </div>
-              ))}
-              <div style={{ marginTop: 10, fontSize: 10, color: "#8A8275", letterSpacing: "0.06em" }}>
-                Corpus: 7.1M retweets · 960 influencers · 2020–2023 · 35 polar aspects · 545,250 tweet–aspect pairs
-              </div>
-            </>
-          );
-        })()}
-      </TerminalBlock>
+      <RankedBars
+        label="Bar chart of stance classification accuracy on the English held-out set: PyABSA 0.520, BERT 0.550, Mistral-7B zero-shot 0.566, RoBERTa 0.577, Mistral-7B few-shot 0.630, Mistral-7B with LoRA fine-tuning 0.775."
+        caption="Stance classification accuracy on the English held-out set (265 samples, mean of three seeds). Corpus: 7.1M retweets, 960 influencers, 2020–2023, 35 polar aspects, 545,250 tweet–aspect pairs."
+        axisLabel="accuracy"
+        rows={[
+          { label: "PyABSA", v: 0.520 },
+          { label: "BERT", v: 0.550 },
+          { label: "Mistral-7B, zero-shot", v: 0.566 },
+          { label: "RoBERTa", v: 0.577 },
+          { label: "Mistral-7B, few-shot", v: 0.630 },
+          { label: "Mistral-7B, LoRA", v: 0.775, hi: true },
+        ]}
+      />
 
       <p className="t-prose">
         The fine-tuned model is roughly twenty points more accurate than the encoder
