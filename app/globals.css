@@ -415,3 +415,22 @@ hr {
     /* Reveal — soft fade-in on page change */
     .reveal { opacity: 1; }
   
+    /* Homepage hero — portrait + link pills */
+    .hero-portrait {
+      width: 100%; height: auto; display: block;
+      aspect-ratio: 3 / 4; object-fit: cover; object-position: 50% 100%;
+      border: 1px solid var(--rule-strong); border-radius: var(--r-2);
+      background: var(--paper-2);
+    }
+    .pill-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+    .pill-links a {
+      font-family: var(--font-mono); font-size: 13px; color: var(--ink);
+      padding: 7px 14px; border: 1px solid var(--rule-strong); border-radius: var(--r-pill);
+      background: color-mix(in oklab, var(--paper) 80%, white);
+      text-decoration: none;
+      transition: border-color var(--dur-fast) var(--ease-standard), color var(--dur-fast) var(--ease-standard);
+    }
+    .pill-links a:hover { border-color: var(--clay); color: var(--clay); }
+    @media (max-width: 768px) {
+      .hero-portrait { max-width: 260px; }
+    }

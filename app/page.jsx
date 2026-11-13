@@ -10,59 +10,52 @@ function HomePage() {
 
   return (
     <div>
-      {/* Hero — grid bg + serif headline + sans bio */}
+      {/* Hero — portrait left, name + bio + links right */}
       <section className="grid-bg" style={{ borderBottom: "1px solid var(--rule)" }}>
-        <div className="container" style={{ padding: "80px var(--s-7) 96px" }}>
-          <Eyebrow section="01">Index · 2026</Eyebrow>
-          <h1 className="t-display" style={{ marginTop: 18, maxWidth: 980 }}>
-            Math, code, and the occasional <em style={{ fontStyle: "italic" }}>winning</em><span className="t-fnref">¹</span> shot.
-          </h1>
-          <div style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: 48,
-            marginTop: 56,
-            maxWidth: 1080,
-          }}>
-            <p style={{ fontFamily: "var(--font-serif)", fontSize: 19, lineHeight: 1.6, margin: 0, color: "var(--ink-2)" }}>
-              I'm a senior at <a href="#">Ashoka</a> reading mathematics and computer science. My work sits where probability, game theory, and reinforcement learning overlap — four papers under review on what breaks when agents can't see everything, and an ATP match-outcome model that holds <em>93.26%</em> accuracy on 12,018 unseen matches.
+        <div className="container stack-sm" style={{
+          padding: "64px var(--s-7) 72px",
+          display: "grid",
+          gridTemplateColumns: "minmax(0, 300px) minmax(0, 1fr)",
+          gap: 56,
+          alignItems: "start",
+        }}>
+          <img
+            className="hero-portrait"
+            src="/assets/agriya.jpg"
+            alt="Agriya Yadav sitting on the steps of a stone monument"
+            width={739}
+            height={1600}
+          />
+          <div style={{ maxWidth: 640 }}>
+            <Eyebrow section="01">Index · 2026</Eyebrow>
+            <h1 style={{
+              fontFamily: "var(--font-serif)", fontSize: "clamp(34px, 4vw, 44px)", fontWeight: 500,
+              letterSpacing: "-0.02em", lineHeight: 1.1, margin: "14px 0 0",
+            }}>
+              Agriya Yadav
+            </h1>
+            <p style={{ fontFamily: "var(--font-serif)", fontSize: 22, lineHeight: 1.35, margin: "10px 0 0", color: "var(--ink-2)" }}>
+              Math, code, and the occasional <em>winning</em><span className="t-fnref">¹</span> shot.
             </p>
-            <p style={{ fontFamily: "var(--font-serif)", fontSize: 19, lineHeight: 1.6, margin: 0, color: "var(--ink-2)" }}>
+            <p style={{ fontFamily: "var(--font-serif)", fontSize: 18, lineHeight: 1.6, margin: "28px 0 0", color: "var(--ink-2)" }}>
+              I&rsquo;m a senior at <a href="https://www.ashoka.edu.in" target="_blank" rel="noopener noreferrer">Ashoka</a> reading mathematics and computer science. My work sits where probability, game theory, and reinforcement learning overlap — four papers under review on what breaks when agents can&rsquo;t see everything, and an ATP match-outcome model that holds <em>93.26%</em> accuracy on 12,018 unseen matches.
+            </p>
+            <p style={{ fontFamily: "var(--font-serif)", fontSize: 18, lineHeight: 1.6, margin: "16px 0 0", color: "var(--ink-2)" }}>
               Before all of this I was a tennis player — ranked first in India in the AITA u-14/u-16 draws, semifinalist at the Junior Australian Open. The court is where I learned what serious practice feels like. Mostly the rest is the same exercise on different terrain.
             </p>
+            <div className="pill-links">
+              <a href="https://github.com/PuffBear" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a href="https://x.com/aggubandar" target="_blank" rel="noopener noreferrer">X</a>
+              <a href="https://www.linkedin.com/in/agriya-yadav/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Stat row — the receipts */}
-      <section className="container" style={{ padding: "56px var(--s-7) 0" }}>
-        <Eyebrow section="02" style={{ marginBottom: 18 }}>Receipts</Eyebrow>
-        <StatRow>
-          <StatBlock num="#1" label="AITA u-14 / u-16" footnote="Ranked first, singles, India." />
-          <StatBlock num="SF" label="Junior Aus. Open" footnote="Semifinals, Melbourne." />
-          <StatBlock num="3,000" unit="/152k" label="Int'l Quant Champ. — S1" footnote="Top 2% of the global field." />
-          <StatBlock num="4" label="Papers under review" footnote="AAAI · AAMAS 2027." />
-        </StatRow>
-      </section>
-
-      {/* Quant championship — strategy book, full width */}
-      <section className="container" style={{ padding: "56px var(--s-7) 0" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 14 }}>
-          <Eyebrow section="03">Quant championship · alphas</Eyebrow>
-          <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--ink-3)", letterSpacing: "0.06em" }}>
-            stage 1 · 152k entrants
-          </span>
-        </div>
-        <QuantBook/>
-        <p className="t-caption" style={{ marginTop: 10 }}>
-          Three of my submitted alphas, with the panel metrics from the BRAIN platform.
-        </p>
-      </section>
-
       {/* Research — two featured papers side by side */}
-      <section className="container" style={{ padding: "72px var(--s-7) 0" }}>
+      <section className="container" style={{ padding: "56px var(--s-7) 0" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 18 }}>
-          <Eyebrow section="04">Research, in review</Eyebrow>
+          <Eyebrow section="02">Research, in review</Eyebrow>
           <Link href="/research" style={{ fontFamily: "var(--font-mono)", fontSize: 12, color: "var(--ink-2)" }}>
             all {PAPERS.length} papers →
           </Link>
@@ -92,6 +85,31 @@ function HomePage() {
             </div>
           ))}
         </div>
+      </section>
+
+      {/* Quant championship — strategy book, full width */}
+      <section className="container" style={{ padding: "72px var(--s-7) 0" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 14 }}>
+          <Eyebrow section="03">Quant championship · alphas</Eyebrow>
+          <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--ink-3)", letterSpacing: "0.06em" }}>
+            stage 1 · 152k entrants
+          </span>
+        </div>
+        <QuantBook/>
+        <p className="t-caption" style={{ marginTop: 10 }}>
+          Three of my submitted alphas, with the panel metrics from the BRAIN platform.
+        </p>
+      </section>
+
+      {/* Stat row — the receipts, after research and the quant book */}
+      <section className="container" style={{ padding: "72px var(--s-7) 0" }}>
+        <Eyebrow section="04" style={{ marginBottom: 18 }}>Receipts</Eyebrow>
+        <StatRow>
+          <StatBlock num="#1" label="AITA u-14 / u-16" footnote="Ranked first, singles, India." />
+          <StatBlock num="SF" label="Junior Aus. Open" footnote="Semifinals, Melbourne." />
+          <StatBlock num="3,000" unit="/152k" label="Int'l Quant Champ. — S1" footnote="Top 2% of the global field." />
+          <StatBlock num="4" label="Papers under review" footnote="AAAI · AAMAS 2027." />
+        </StatRow>
       </section>
 
       {/* Project teaser — 3 cards */}

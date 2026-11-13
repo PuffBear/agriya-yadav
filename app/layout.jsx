@@ -4,7 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata = {
-  title: "Agriya Yadav | Quant Editorial",
+  title: "Agriya Yadav",
   description: "Personal site of Agriya Yadav.",
   icons: {
     icon: "/assets/logo-mark.svg",
