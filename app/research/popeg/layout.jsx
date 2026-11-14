@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "When does partial observability bind in pursuit–evasion?",
-  description: "The POPEG benchmark and a policy-class audit",
+  title: "POPEG: Selecting pursuit tasks and characterizing controller failures",
+  description: "A controlled pursuit–evasion benchmark, a joint reference map, and event diagnostics.",
 };
 
 export default function Layout({ children }) {

@@ -316,3 +316,89 @@ export function OrderBookDiagram() {
     </Figure>
   );
 }
+
+/* ── POPEG joint reference map (paper Fig. 1) ───────────────────────
+   Cells: best coverage/reactive baseline % / privileged %, rounded, at
+   W = 25, threshold 0.80. S = baseline sufficient, F = baseline shortfall,
+   A = all below threshold; u marks labels unresolved under the
+   simultaneous Wilson intervals. Values transcribed from the manuscript. */
+
+const MAP_COLORS = { S: "#2E8B57", F: "#D9962B", A: "#6A7FD6" };
+const MAP_TEXT = { S: "#FFFFFF", F: "#14110E", A: "#FFFFFF" };
+const MAP_LABELS = { S: "Baseline sufficient", F: "Baseline shortfall", A: "All below threshold" };
+const EPS = ["0", ".025", ".05", ".10", ".20"];
+const MAP = {
+  104: [ // r = 4, 3, 2, 1
+    [["2/0","A"],["65/74","A"],["82/93","S","u"],["92/99","S"],["98/100","S"]],
+    [["2/0","A"],["57/74","A"],["75/93","F"],["88/99","S"],["96/100","S"]],
+    [["2/0","A"],["32/74","A"],["44/93","F"],["55/99","F"],["74/100","F"]],
+    [["1/0","A"],["20/74","A"],["25/93","F"],["29/99","F"],["32/100","F"]],
+  ],
+  208: [
+    [["2/0","A"],["92/94","S"],["99/99","S"],["100/100","S"],["100/100","S"]],
+    [["2/0","A"],["89/94","S"],["97/99","S"],["99/100","S"],["100/100","S"]],
+    [["2/0","A"],["56/94","F"],["68/99","F","c"],["84/100","S"],["98/100","S"]],
+    [["1/0","A"],["36/94","F"],["47/99","F"],["54/100","F"],["66/100","F"]],
+  ],
+  416: [
+    [["2/0","A"],["99/99","S"],["100/100","S"],["100/100","S"],["100/100","S"]],
+    [["3/0","A"],["98/99","S"],["100/100","S"],["100/100","S"],["100/100","S"]],
+    [["3/0","A"],["83/99","S"],["89/100","S"],["96/100","S"],["100/100","S"]],
+    [["2/0","A"],["66/99","F"],["71/100","F"],["78/100","F","u"],["92/100","S"]],
+  ],
+};
+
+export function ReferenceMap() {
+  const cw = 64, ch = 30, panelW = cw * 5, gapX = 40, x0 = 34, y0 = 62;
+  const W = x0 + panelW * 3 + gapX * 2 + 6, H = y0 + ch * 4 + 48;
+  return (
+    <Figure
+      label="Joint reference map for the POPEG benchmark at grid size 25: three panels for horizons 104, 208 and 416 steps; rows are sensing radius 1 to 4 and columns are evader randomness 0 to 0.20. Each cell shows best baseline capture and privileged capture in percent and is classed as baseline sufficient, baseline shortfall or all below threshold."
+      caption="Joint reference map at W = 25 and an 80% capture threshold. Each cell is best coverage/reactive baseline / privileged capture, in percent. Green: a baseline already reaches 80%. Ochre: only the privileged reference does. Blue: nothing does. Hatched cells are unresolved within sampling error; the outlined cell is the canonical setting."
+      viewBox={`0 0 ${W} ${H}`}
+    >
+      <defs>
+        <pattern id="popeg-hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+          <line x1="0" y1="0" x2="0" y2="6" stroke="#14110E" strokeWidth="1.4" strokeOpacity="0.55" />
+        </pattern>
+      </defs>
+      {Object.keys(MAP_LABELS).map((k, i) => (
+        <g key={k}>
+          <rect x={x0 + i * 168} y={6} width="12" height="12" rx="2" fill={MAP_COLORS[k]} />
+          <text x={x0 + i * 168 + 18} y={16} fontSize="11.5" fill="currentColor" opacity="0.85" fontFamily={MONO}>{MAP_LABELS[k]}</text>
+        </g>
+      ))}
+      <g>
+        <rect x={x0 + 3 * 168 - 4} y={6} width="12" height="12" rx="2" fill="url(#popeg-hatch)" stroke="currentColor" strokeOpacity="0.4" />
+        <text x={x0 + 3 * 168 + 14} y={16} fontSize="11.5" fill="currentColor" opacity="0.85" fontFamily={MONO}>Uncertain</text>
+      </g>
+      {[104, 208, 416].map((T, pi) => {
+        const px = x0 + pi * (panelW + gapX);
+        return (
+          <g key={T}>
+            <text x={px + panelW / 2} y={y0 - 10} textAnchor="middle" fontSize="13" fontWeight="600" fill="currentColor" fontFamily={SANS}>T = {T}</text>
+            {MAP[T].map((row, ri) => row.map(([v, k, flag], ci) => {
+              const x = px + ci * cw, y = y0 + ri * ch;
+              return (
+                <g key={`${ri}-${ci}`}>
+                  <title>{`T = ${T}, r = ${4 - ri}, ε = ${EPS[ci]}: ${v} (${MAP_LABELS[k]}${flag === "u" ? ", unresolved" : ""})`}</title>
+                  <rect x={x + 1} y={y + 1} width={cw - 2} height={ch - 2} fill={MAP_COLORS[k]} />
+                  {flag === "u" && <rect x={x + 1} y={y + 1} width={cw - 2} height={ch - 2} fill="url(#popeg-hatch)" />}
+                  {flag === "c" && <rect x={x + 2} y={y + 2} width={cw - 4} height={ch - 4} fill="none" stroke="#14110E" strokeWidth="2.5" />}
+                  <text x={x + cw / 2} y={y + ch / 2 + 4} textAnchor="middle" fontSize="11" fill={MAP_TEXT[k]} fontFamily={MONO}>{v}</text>
+                </g>
+              );
+            }))}
+            {EPS.map((e, ci) => (
+              <text key={e} x={px + ci * cw + cw / 2} y={y0 + ch * 4 + 16} textAnchor="middle" fontSize="11" fill="currentColor" opacity="0.7" fontFamily={MONO}>{e}</text>
+            ))}
+            {pi === 0 && [4, 3, 2, 1].map((r, ri) => (
+              <text key={r} x={px - 10} y={y0 + ri * ch + ch / 2 + 4} textAnchor="end" fontSize="11" fill="currentColor" opacity="0.7" fontFamily={MONO}>{r}</text>
+            ))}
+          </g>
+        );
+      })}
+      <text x={x0 + (panelW * 3 + gapX * 2) / 2} y={H - 6} textAnchor="middle" fontSize="11" fill="currentColor" opacity="0.7" fontFamily={MONO}>evader randomness ε  ·  rows: sensing radius r</text>
+    </Figure>
+  );
+}

@@ -235,7 +235,7 @@ export function SaddleNodeChart() {
     <Figure
       viewBox="0 0 460 240"
       label="Exact stable and saddle branches of the interior stationary point against loss aversion. The two branches are created together at the saddle-node threshold lambda = 2.2113 and separate as lambda increases; the stable branch reaches the boundary at lambda = 2.5."
-      caption="The exact loss-aversion-induced saddle-node (Theorem 4). Branches are solved from the closed form R(x) = (2−3x)√x·(3x²−4x+2)^(−3/4) against C = 5−2λ, so this is the analytic curve rather than a sampled fit. Below λ_SN there is no finite interior equilibrium at all: the pair is created, not destabilized."
+      caption="The exact loss-aversion-induced saddle-node (Theorem 6), under quarter-power weighting for two agents. Branches are solved from the closed form R(x) = (2−3x)√x·(3x²−4x+2)^(−3/4) against C = 5−2λ, so this is the analytic curve rather than a sampled fit. Below λ_SN there is no finite interior equilibrium at all: the pair is created, not destabilized."
     >
       <Axes
         x0={52} x1={442} y0={202} y1={18}

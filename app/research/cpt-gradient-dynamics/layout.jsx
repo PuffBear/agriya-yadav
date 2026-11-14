@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Prospect-theoretic gradient dynamics: stability and bifurcations in multi-agent learning",
-  description: "Probability weighting traps risk-sensitive learners in multi-agent settings",
+  title: "Probability weighting traps risk-sensitive learners in multi-agent coordination",
+  description: "A stable coordination failure created by prospect-theoretic preferences.",
 };
 
 export default function Layout({ children }) {
