@@ -121,6 +121,22 @@ export default function ResearchPage() {
           {PAPERS.map((p) => <PaperRow key={p.slug} p={p} />)}
         </div>
 
+        <div style={{ padding: "22px 0", borderBottom: "1px solid var(--rule)" }}>
+          <div style={{
+            fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: "0.14em",
+            textTransform: "uppercase", color: "var(--ink-3)", marginBottom: 8,
+          }}>
+            Also under review &nbsp;·&nbsp; <span style={{ color: "var(--clay)" }}>CSCW · submitted</span>
+          </div>
+          <Link href="/work/influencer-partisanship" style={{ fontFamily: "var(--font-serif)", fontSize: 22 }}>
+            Influencing the divide: political partisanship in Indian influencer discourse on X
+          </Link>
+          <p style={{ fontFamily: "var(--font-sans)", fontSize: 14, color: "var(--ink-2)", margin: "8px 0 0", maxWidth: 680 }}>
+            A separate line of work: retweet-based political leaning, aspect extraction, and a
+            fine-tuned stance classifier over 7.1M retweets of Indian influencers.
+          </p>
+        </div>
+
         <p className="t-caption" style={{ marginTop: 24, maxWidth: 680 }}>
           All four are submitted and under review, so each page gives the abstract, the headline result and the figures
           rather than the manuscript. The longer write-ups go out by email — ask me for

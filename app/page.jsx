@@ -1,6 +1,7 @@
 "use client";
 import React from 'react';
 import Link from "next/link";
+import Image from "next/image";
 import { Eyebrow, StatBlock, StatRow, ProjectCard, QuantBook, Footnote } from "@/components/Primitives";
 import { PAPERS } from "./research/papers";
 /* HomePage.jsx — landing page */
@@ -19,12 +20,14 @@ function HomePage() {
           gap: 56,
           alignItems: "start",
         }}>
-          <img
+          <Image
             className="hero-portrait"
             src="/assets/agriya.jpg"
             alt="Agriya Yadav sitting on the steps of a stone monument"
             width={739}
             height={1600}
+            sizes="(max-width: 768px) 260px, 300px"
+            priority
           />
           <div style={{ maxWidth: 640 }}>
             <Eyebrow section="01">Index · 2026</Eyebrow>
@@ -38,7 +41,7 @@ function HomePage() {
               Math, code, and the occasional <em>winning</em><span className="t-fnref">¹</span> shot.
             </p>
             <p style={{ fontFamily: "var(--font-serif)", fontSize: 18, lineHeight: 1.6, margin: "28px 0 0", color: "var(--ink-2)" }}>
-              I&rsquo;m a senior at <a href="https://www.ashoka.edu.in" target="_blank" rel="noopener noreferrer">Ashoka</a> reading mathematics and computer science. My work sits where probability, game theory, and reinforcement learning overlap — <Link href="/research">four papers under review</Link> on what breaks when agents can&rsquo;t see everything, and a <Link href="/work/influencer-partisanship">fifth</Link> on political partisanship amongst influencers. There is also an <Link href="/work/turnsports">ATP match-outcome model</Link> that holds <em>93.26%</em> accuracy on 12,018 unseen matches and a <Link href="/work/taskbound">prompt-injection defense</Link> for tool-using agents. Lately been working and reading a lot on physical AI.
+              I&rsquo;m a senior at <a href="https://www.ashoka.edu.in" target="_blank" rel="noopener noreferrer">Ashoka</a> reading mathematics and computer science. My work sits where probability, game theory, and reinforcement learning overlap — <Link href="/research">four papers under review</Link> on what breaks when agents can&rsquo;t see everything, and a <Link href="/work/influencer-partisanship">fifth</Link> on political partisanship amongst influencers. There is also an <Link href="/work/turnsports">ATP match model</Link> whose surface-aware rating picks <em>64%</em> of winners before a ball is hit, and a <Link href="/work/taskbound">prompt-injection defense</Link> for tool-using agents. Lately been working and reading a lot on physical AI.
             </p>
             <p style={{ fontFamily: "var(--font-serif)", fontSize: 18, lineHeight: 1.6, margin: "16px 0 0", color: "var(--ink-2)" }}>
               Away from the work it&rsquo;s mostly music, architecture, and watching sport — MLB, the NBA, and tennis — along with a steady run of movies and TV shows. What&rsquo;s currently on rotation is on the <Link href="/shelf">shelf</Link>.
@@ -63,7 +66,7 @@ function HomePage() {
             all {PAPERS.length} papers →
           </Link>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32, alignItems: "start" }}>
+        <div className="stack-sm" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32, alignItems: "start" }}>
           {featured.map((p) => (
             <div key={p.slug}>
               <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--ink-3)", marginBottom: 8 }}>
@@ -109,7 +112,7 @@ function HomePage() {
             see all 14 →
           </Link>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }}>
+        <div className="stack-sm" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }}>
           <ProjectCard
             num="04"
             date="FEB — MAY 2025"
@@ -201,7 +204,7 @@ function HomePage() {
       {/* Footnotes */}
       <section className="container" style={{ padding: "72px var(--s-7) 24px" }}>
         <div style={{ borderTop: "1px solid var(--rule)", paddingTop: 18, display: "flex", flexDirection: "column", gap: 8, maxWidth: 720 }}>
-          <Footnote n="1">Winning is a strong word. The model is wrong 6.74% of the time, and on grass it is wrong more.</Footnote>
+          <Footnote n="1">Winning is a strong word. Before the match, the model picks the winner about two times in three, and on grass it does worse.</Footnote>
         </div>
       </section>
     </div>

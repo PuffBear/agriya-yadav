@@ -33,7 +33,7 @@ export default function Header() {
               {l.label}
             </Link>
           ))}
-          <span style={{ width: 1, height: 16, background: "var(--rule-strong)", margin: "0 4px" }}></span>
+          <span className="nav-divider" style={{ width: 1, height: 16, background: "var(--rule-strong)", margin: "0 4px" }}></span>
           <a href="mailto:agriya.yadav_ug2023@ashoka.edu.in" className="nav-link" style={{ color: "var(--clay)" }}>Email →</a>
         </nav>
       </div>

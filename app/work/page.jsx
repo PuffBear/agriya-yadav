@@ -81,7 +81,7 @@ function WorkPage() {
       </section>
 
       <section className="container" style={{ padding: "0 var(--s-7) 16px" }}>
-        <div style={{ display: "flex", gap: 8, alignItems: "center", padding: "16px 0", borderTop: "1px solid var(--rule)", borderBottom: "1px solid var(--rule)", marginBottom: 24 }}>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center", padding: "16px 0", borderTop: "1px solid var(--rule)", borderBottom: "1px solid var(--rule)", marginBottom: 24 }}>
           <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--ink-3)", marginRight: 8 }}>Filter</span>
           {cats.map(c => {
             const on = filter === c;
@@ -98,7 +98,7 @@ function WorkPage() {
             );
           })}
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 16 }}>
+        <div className="stack-sm" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 16 }}>
           {items.map(it => (
             <ProjectCard key={it.num} {...it}/>
           ))}

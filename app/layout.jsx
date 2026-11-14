@@ -4,25 +4,20 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata = {
-  title: "Agriya Yadav",
-  description: "Personal site of Agriya Yadav.",
+  metadataBase: new URL("https://agriya-yadav.vercel.app"),
+  title: { default: "Agriya Yadav", template: "%s · Agriya Yadav" },
+  description: "Agriya Yadav — mathematics and computer science at Ashoka. Multi-agent RL, game theory, and the occasional tennis model.",
   icons: {
     icon: "/assets/logo-mark.svg",
   },
   openGraph: {
     title: "Agriya Yadav",
     description: "Personal site of Agriya Yadav.",
-    url: "https://agriyayadav.com",
+    url: "/",
     siteName: "Agriya Yadav",
-    images: [
-      {
-        url: "/assets/logo-mark.svg",
-        width: 800,
-        height: 600,
-      },
-    ],
     type: "website",
   },
+  twitter: { card: "summary_large_image" },
 };
 
 export default function RootLayout({ children }) {

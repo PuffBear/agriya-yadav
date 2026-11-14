@@ -68,7 +68,7 @@ export function StatBlock({ num, unit, label, footnote }) {
 
 export function StatRow({ children }) {
   return (
-    <div style={{
+    <div className="stat-row" style={{
       display: "grid",
       gridTemplateColumns: `repeat(${React.Children.count(children)}, 1fr)`,
       borderTop: "1px solid var(--rule)",
@@ -162,9 +162,10 @@ export function QuantBook() {
       lineHeight: 1.75,
       letterSpacing: "0.02em",
       boxShadow: "inset 0 0 0 1px rgba(244,238,226,0.08)",
+      overflowX: "auto",
     }}>
       <div style={{
-        display: "flex", justifyContent: "space-between", alignItems: "baseline",
+        display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 12, minWidth: 560,
         color: "#8A8275", borderBottom: "1px solid rgba(244,238,226,0.1)",
         paddingBottom: 8, marginBottom: 8,
         fontSize: 10, letterSpacing: "0.14em", textTransform: "uppercase",
@@ -174,7 +175,7 @@ export function QuantBook() {
       </div>
       {/* column header */}
       <div style={{
-        display: "grid", gridTemplateColumns: grid, gap: 8,
+        display: "grid", gridTemplateColumns: grid, gap: 8, minWidth: 560,
         color: "#8A8275", fontSize: 10, letterSpacing: "0.14em", textTransform: "uppercase",
         paddingBottom: 6,
       }}>
@@ -188,7 +189,7 @@ export function QuantBook() {
       </div>
       {rows.map((r) => (
         <div key={r.id} style={{
-          display: "grid", gridTemplateColumns: grid, gap: 8, alignItems: "baseline",
+          display: "grid", gridTemplateColumns: grid, gap: 8, minWidth: 560, alignItems: "baseline",
           fontVariantNumeric: "tabular-nums",
         }}>
           <span style={{ color: "#8A8275" }}>{r.id}</span>
