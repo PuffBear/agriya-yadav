@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Local CV builds (contain personal contact details; kept out of the public repo)
+cv/
