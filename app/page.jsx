@@ -53,6 +53,7 @@ function HomePage() {
               <a href="https://github.com/PuffBear" target="_blank" rel="noopener noreferrer">GitHub</a>
               <a href="https://x.com/aggubandar" target="_blank" rel="noopener noreferrer">X</a>
               <a href="https://www.linkedin.com/in/agriya-yadav/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              <a href="/agriya-yadav-cv.pdf" target="_blank" rel="noopener noreferrer">CV (PDF)</a>
             </div>
           </div>
         </div>
