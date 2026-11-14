@@ -115,7 +115,7 @@ function HomePage() {
             date="FEB — MAY 2025"
             title="turnsports.ai"
             href="/work/turnsports"
-            desc="ATP match-outcome predictor. 93.26% test accuracy on 12,018 unseen matches; custom TennisElo with surface-specific K-factors. Production Node + React, 150 ms / 2,000 QPS."
+            desc="ATP match models on 2010–2024 data, served from precomputed predictions. A custom surface-aware Elo picks 64% of winners before the match; classifiers reading a match’s own serve statistics reach 90–94%. Plus a poker bot with a coach."
             tags={["tennis", "ml", "full-stack"]}
           />
           <ProjectCard

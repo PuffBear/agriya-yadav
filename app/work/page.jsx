@@ -47,7 +47,7 @@ const WORK_ITEMS = [
     href: LINKEDIN_EXPERIENCE,
     tags: ["software", "ocr", "llm"], cat: "Software" },
   { num: "04", date: "FEB — MAY 2025", title: "turnsports.ai",
-    desc: "ATP match-outcome predictor. 93.26% test accuracy on 12,018 unseen matches; custom TennisElo with surface-specific K-factors. Production Node + React, MySQL-indexed, 120k+ precomputed predictions, 150 ms p50 / 2,000 QPS simulated load.",
+    desc: "ATP match models on 42,514 matches from 2010–2024. A custom surface-aware TennisElo picks 64% of winners before the match; classifiers reading a match’s own serve statistics reach 90–94% on 6,009 held-out matches. Served from 120k+ precomputed predictions via Node and MySQL. Later extended to a heads-up poker bot with an LLM coach.",
     href: "/work/turnsports",
     tags: ["tennis", "ml", "full-stack"], cat: "Sport" },
   { num: "03", date: "OCT 2025 — JAN 2026", title: "Order matching engine",
